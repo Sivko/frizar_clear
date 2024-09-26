@@ -1,0 +1,26 @@
+services:
+  db: 
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=frizar
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin # this should live in a env var
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  www:
+    image: php:apache
+    volumes:
+      - "./:/var/www/html" # sync the current dir on local machine to the dir of container
+      - ./custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini
+    working_dir: /var/www/html # command: bash -c 'docker-php-ext-install mysqli && a2enmod rewrite && a2enmod actions && apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev && apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev libfreetype6-dev && docker-php-ext-install gd ' 
+    # command: bash -c 'apt update && apt install -y zlib1g-dev libpng-dev && rm -rf /var/lib/apt/lists/* && docker-php-ext-install gd' 
+    # command: bash -c 'apt update && apt install -y zlib1g-dev libpng-dev' 
+    ports:
+      - 80:80
+
+
+volumes:
+  db_data:

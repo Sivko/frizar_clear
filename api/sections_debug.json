@@ -1,0 +1,2342 @@
+[
+    {
+        "ID": "274",
+        "NAME": "Слесарно-монтажный инструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "280",
+        "DEPTH_LEVEL": "1",
+        "IBLOCK_SECTION_ID": null,
+        "CODE": "slesarno_montazhnyy_instrument"
+    },
+    {
+        "ID": "373",
+        "NAME": "Электроинструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "490",
+        "DEPTH_LEVEL": "1",
+        "IBLOCK_SECTION_ID": null,
+        "CODE": "elektroinstrument"
+    },
+    {
+        "ID": "133",
+        "NAME": "Режущий инструмент для металлообработки",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "1",
+        "IBLOCK_SECTION_ID": null,
+        "CODE": "rezhushchiy_instrument_dlya_metalloobrabotki"
+    },
+    {
+        "ID": "143",
+        "NAME": "Ручные средства измерения",
+        "IBLOCK_ID": "17",
+        "SORT": "300",
+        "DEPTH_LEVEL": "1",
+        "IBLOCK_SECTION_ID": null,
+        "CODE": "ruchnye_sredstva_izmereniya"
+    },
+    {
+        "ID": "152",
+        "NAME": "Станочная оснастка",
+        "IBLOCK_ID": "17",
+        "SORT": "400",
+        "DEPTH_LEVEL": "1",
+        "IBLOCK_SECTION_ID": null,
+        "CODE": "stanochnaya_osnastka"
+    },
+    {
+        "ID": "275",
+        "NAME": "Режущий инструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "400",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "274",
+        "CODE": "rezhushchiy_instrument"
+    },
+    {
+        "ID": "304",
+        "NAME": "Ручной инструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "450",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "274",
+        "CODE": "ruchnoy_instrument"
+    },
+    {
+        "ID": "374",
+        "NAME": "Аппараты для сварки пластиковых труб",
+        "IBLOCK_ID": "17",
+        "SORT": "500",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "apparaty_dlya_svarki_plastikovykh_trub"
+    },
+    {
+        "ID": "375",
+        "NAME": "Дрели ударные",
+        "IBLOCK_ID": "17",
+        "SORT": "510",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "dreli_udarnye"
+    },
+    {
+        "ID": "376",
+        "NAME": "Дрели-шуруповерты",
+        "IBLOCK_ID": "17",
+        "SORT": "520",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "dreli_shurupoverty"
+    },
+    {
+        "ID": "379",
+        "NAME": "Лобзики электрические",
+        "IBLOCK_ID": "17",
+        "SORT": "550",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "lobziki_elektricheskie"
+    },
+    {
+        "ID": "380",
+        "NAME": "Перфораторы",
+        "IBLOCK_ID": "17",
+        "SORT": "560",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "perforatory"
+    },
+    {
+        "ID": "381",
+        "NAME": "Пилы циркулярные",
+        "IBLOCK_ID": "17",
+        "SORT": "570",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "pily_tsirkulyarnye"
+    },
+    {
+        "ID": "382",
+        "NAME": "Станки заточные",
+        "IBLOCK_ID": "17",
+        "SORT": "580",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "stanki_zatochnye"
+    },
+    {
+        "ID": "385",
+        "NAME": "Фрезеры",
+        "IBLOCK_ID": "17",
+        "SORT": "610",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "frezery"
+    },
+    {
+        "ID": "392",
+        "NAME": "Шлифмашины",
+        "IBLOCK_ID": "17",
+        "SORT": "620",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "373",
+        "CODE": "shlifmashiny"
+    },
+    {
+        "ID": "144",
+        "NAME": "Микрометры",
+        "IBLOCK_ID": "17",
+        "SORT": "900",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "mikrometry_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "145",
+        "NAME": "Нутромеры",
+        "IBLOCK_ID": "17",
+        "SORT": "1000",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "nutromery_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "146",
+        "NAME": "Штангенциркули",
+        "IBLOCK_ID": "17",
+        "SORT": "1300",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "shtangentsirkuli"
+    },
+    {
+        "ID": "147",
+        "NAME": "Толщиномеры, глубиномеры, угломеры, кронциркули",
+        "IBLOCK_ID": "17",
+        "SORT": "1200",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "tolshchinomery_glubinomery_uglomery_krontsirkuli_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "148",
+        "NAME": "Высотомеры",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "vysotomery_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "149",
+        "NAME": "Индикаторы",
+        "IBLOCK_ID": "17",
+        "SORT": "400",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "indikatory_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "150",
+        "NAME": "Скобы измерительные",
+        "IBLOCK_ID": "17",
+        "SORT": "1100",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "skoby_izmeritelnye_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "151",
+        "NAME": "Вспомогательные приспособления",
+        "IBLOCK_ID": "17",
+        "SORT": "100",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "vspomogatelnye_prisposobleniya_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "409",
+        "NAME": "Цифровые и линейные шкалы",
+        "IBLOCK_ID": "17",
+        "SORT": "1250",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "tsifrovye_i_lineynye_shkaly_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "154",
+        "NAME": "Меры твердости",
+        "IBLOCK_ID": "17",
+        "SORT": "700",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "mery_tverdosti_rossiya"
+    },
+    {
+        "ID": "156",
+        "NAME": "Концевые меры длины",
+        "IBLOCK_ID": "17",
+        "SORT": "600",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "kontsevye_mery_dliny_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "157",
+        "NAME": "Микрометрические головки",
+        "IBLOCK_ID": "17",
+        "SORT": "800",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "mikrometricheskie_golovki_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "158",
+        "NAME": "Измерение формы",
+        "IBLOCK_ID": "17",
+        "SORT": "300",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "izmerenie_formy_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "159",
+        "NAME": "Калибр-пробки гладкие",
+        "IBLOCK_ID": "17",
+        "SORT": "500",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "kalibr_probki_gladkie_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "417",
+        "NAME": "Система датчиков",
+        "IBLOCK_ID": "17",
+        "SORT": "1140",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "sistema_datchikov"
+    },
+    {
+        "ID": "418",
+        "NAME": "Оптические системы",
+        "IBLOCK_ID": "17",
+        "SORT": "1100",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "opticheskie_sistemy"
+    },
+    {
+        "ID": "422",
+        "NAME": "Пластины",
+        "IBLOCK_ID": "17",
+        "SORT": "170",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "plastiny_tverdosplavnye"
+    },
+    {
+        "ID": "423",
+        "NAME": "Сенсорные системы- Лазерные сканирующие микрометры Mitutoyo (Япония)",
+        "IBLOCK_ID": "17",
+        "SORT": "1130",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "sensornye_sistemy_lazernye_skaniruyushchie_mikrometry_mitutoyo_yaponiya"
+    },
+    {
+        "ID": "427",
+        "NAME": "Заготовки из твердого сплава",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "zagotovki_iz_tverdogo_splava"
+    },
+    {
+        "ID": "172",
+        "NAME": "Обработка отверстий",
+        "IBLOCK_ID": "17",
+        "SORT": "160",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "obrabotka_otverstiy_guhring_germaniya"
+    },
+    {
+        "ID": "430",
+        "NAME": "Поверочные измерительные приборы",
+        "IBLOCK_ID": "17",
+        "SORT": "1120",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "poverochnye_izmeritelnye_pribory"
+    },
+    {
+        "ID": "432",
+        "NAME": "Токарная обработка",
+        "IBLOCK_ID": "17",
+        "SORT": "180",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "tokarnaya_obrabotka"
+    },
+    {
+        "ID": "183",
+        "NAME": "Зенкование",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "zenkovanie"
+    },
+    {
+        "ID": "184",
+        "NAME": "Нарезание и накатка резьбы",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "narezanie_i_nakatka_rezby"
+    },
+    {
+        "ID": "185",
+        "NAME": "Фрезерование",
+        "IBLOCK_ID": "17",
+        "SORT": "190",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "133",
+        "CODE": "frezerovanie"
+    },
+    {
+        "ID": "193",
+        "NAME": "Абразивный инструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "274",
+        "CODE": "abrazivnyy_instrument"
+    },
+    {
+        "ID": "449",
+        "NAME": "Пневмоинструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "1290",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "274",
+        "CODE": "pnevmoinstrument"
+    },
+    {
+        "ID": "450",
+        "NAME": "Опорные амортизаторы",
+        "IBLOCK_ID": "17",
+        "SORT": "2560",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "152",
+        "CODE": "opornye_amortizatory"
+    },
+    {
+        "ID": "451",
+        "NAME": "Твердомеры",
+        "IBLOCK_ID": "17",
+        "SORT": "880",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "tverdomery"
+    },
+    {
+        "ID": "454",
+        "NAME": "Патроны токарные",
+        "IBLOCK_ID": "17",
+        "SORT": "2590",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "152",
+        "CODE": "patrony_tokarnye"
+    },
+    {
+        "ID": "455",
+        "NAME": "Тиски станочные",
+        "IBLOCK_ID": "17",
+        "SORT": "2610",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "152",
+        "CODE": "tiski_stanochnye"
+    },
+    {
+        "ID": "729",
+        "NAME": "Плиты поверочные и разметочные",
+        "IBLOCK_ID": "17",
+        "SORT": "840",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "plity_poverochnye_i_razmetochnye_gost_10905_86"
+    },
+    {
+        "ID": "222",
+        "NAME": "Измерительный инструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "280",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "274",
+        "CODE": "izmeritelnyy_instrument"
+    },
+    {
+        "ID": "736",
+        "NAME": "Наборы средств измерений",
+        "IBLOCK_ID": "17",
+        "SORT": "750",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "nabory_sredstv_izmereniy"
+    },
+    {
+        "ID": "737",
+        "NAME": "Уровни",
+        "IBLOCK_ID": "17",
+        "SORT": "920",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "143",
+        "CODE": "urovni_1"
+    },
+    {
+        "ID": "741",
+        "NAME": "Кулачки к патронам",
+        "IBLOCK_ID": "17",
+        "SORT": "2560",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "152",
+        "CODE": "kulachki_k_patronam"
+    },
+    {
+        "ID": "242",
+        "NAME": "Ящики, приспособления для хранения инструментов",
+        "IBLOCK_ID": "17",
+        "SORT": "490",
+        "DEPTH_LEVEL": "2",
+        "IBLOCK_SECTION_ID": "274",
+        "CODE": "yashchiki_prisposobleniya_dlya_khraneniya_instrumentov"
+    },
+    {
+        "ID": "256",
+        "NAME": "Пилки для электро лобзиков",
+        "IBLOCK_ID": "17",
+        "SORT": "230",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "275",
+        "CODE": "pilki_dlya_elektro_lobzikov"
+    },
+    {
+        "ID": "257",
+        "NAME": "Режущий инструмент по бетону",
+        "IBLOCK_ID": "17",
+        "SORT": "240",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "275",
+        "CODE": "rezhushchiy_instrument_po_betonu"
+    },
+    {
+        "ID": "264",
+        "NAME": "Режущий инструмент по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "260",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "275",
+        "CODE": "rezhushchiy_instrument_po_metallu"
+    },
+    {
+        "ID": "276",
+        "NAME": "Режущий инструмент по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "250",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "275",
+        "CODE": "rezhushchiy_instrument_po_derevu"
+    },
+    {
+        "ID": "295",
+        "NAME": "Режущий инструмент по стеклу и кафелю",
+        "IBLOCK_ID": "17",
+        "SORT": "270",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "275",
+        "CODE": "rezhushchiy_instrument_po_steklu_i_kafelyu"
+    },
+    {
+        "ID": "305",
+        "NAME": "Биты, адаптеры, рукоятки отверточные для бит",
+        "IBLOCK_ID": "17",
+        "SORT": "1370",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "bity_adaptery_rukoyatki_otvertochnye_dlya_bit"
+    },
+    {
+        "ID": "310",
+        "NAME": "Вспомогательный инструмент автомобилиста",
+        "IBLOCK_ID": "17",
+        "SORT": "1420",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "vspomogatelnyy_instrument_avtomobilista"
+    },
+    {
+        "ID": "311",
+        "NAME": "Головки торцевые",
+        "IBLOCK_ID": "17",
+        "SORT": "1430",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "golovki_tortsevye"
+    },
+    {
+        "ID": "318",
+        "NAME": "Заклепочники, заклепки",
+        "IBLOCK_ID": "17",
+        "SORT": "1500",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "zaklepochniki_zaklepki"
+    },
+    {
+        "ID": "321",
+        "NAME": "Зубила по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "1530",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "zubila_po_metallu"
+    },
+    {
+        "ID": "322",
+        "NAME": "Инструмент для работы с ламинатом",
+        "IBLOCK_ID": "17",
+        "SORT": "1540",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "instrument_dlya_raboty_s_laminatom"
+    },
+    {
+        "ID": "323",
+        "NAME": "Клупы для нарезания резьбы, воротки для клупов",
+        "IBLOCK_ID": "17",
+        "SORT": "1550",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "klupy_dlya_narezaniya_rezby_vorotki_dlya_klupov"
+    },
+    {
+        "ID": "324",
+        "NAME": "Ключи",
+        "IBLOCK_ID": "17",
+        "SORT": "1560",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "klyuchi"
+    },
+    {
+        "ID": "333",
+        "NAME": "Молотки, топоры, гвоздодеры",
+        "IBLOCK_ID": "17",
+        "SORT": "1650",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "molotki_topory_gvozdodery"
+    },
+    {
+        "ID": "334",
+        "NAME": "Отвертки",
+        "IBLOCK_ID": "17",
+        "SORT": "1660",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "otvertki"
+    },
+    {
+        "ID": "342",
+        "NAME": "Пистолеты склеивающие стержнями",
+        "IBLOCK_ID": "17",
+        "SORT": "1740",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "pistolety_skleivayushchie_sterzhnyami"
+    },
+    {
+        "ID": "345",
+        "NAME": "Стамески",
+        "IBLOCK_ID": "17",
+        "SORT": "1770",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "stameski"
+    },
+    {
+        "ID": "346",
+        "NAME": "Степлеры, скобы",
+        "IBLOCK_ID": "17",
+        "SORT": "1780",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "steplery_skoby"
+    },
+    {
+        "ID": "350",
+        "NAME": "Тиски, прессы ручные, зажимы, струбцины",
+        "IBLOCK_ID": "17",
+        "SORT": "1820",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "tiski_pressy_ruchnye_zazhimy_strubtsiny"
+    },
+    {
+        "ID": "355",
+        "NAME": "Воротки, трещотки,удлинители,шарниры,адаптеры",
+        "IBLOCK_ID": "17",
+        "SORT": "1400",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "vorotki_treshchotki_udliniteli_sharniry_adaptery"
+    },
+    {
+        "ID": "363",
+        "NAME": "Шарнирно-губцевый инструмент",
+        "IBLOCK_ID": "17",
+        "SORT": "1950",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "sharnirno_gubtsevyy_instrument"
+    },
+    {
+        "ID": "371",
+        "NAME": "Шпильковерты, гайколомы",
+        "IBLOCK_ID": "17",
+        "SORT": "2030",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "shpilkoverty_gaykolomy"
+    },
+    {
+        "ID": "372",
+        "NAME": "Экстракторы",
+        "IBLOCK_ID": "17",
+        "SORT": "2040",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "ekstraktory"
+    },
+    {
+        "ID": "377",
+        "NAME": "Дрели-шуруповерты аккумуляторные",
+        "IBLOCK_ID": "17",
+        "SORT": "530",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "376",
+        "CODE": "dreli_shurupoverty_akkumulyatornye"
+    },
+    {
+        "ID": "383",
+        "NAME": "Шлифмашины угловые",
+        "IBLOCK_ID": "17",
+        "SORT": "590",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "392",
+        "CODE": "shlifmashiny_uglovye"
+    },
+    {
+        "ID": "386",
+        "NAME": "Шаблоны",
+        "IBLOCK_ID": "17",
+        "SORT": "980",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "222",
+        "CODE": "shablony"
+    },
+    {
+        "ID": "134",
+        "NAME": "Фрезы из твердого сплава с цилиндрическим хвостовиком, GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_iz_tverdogo_splava_s_tsilindricheskim_khvostovikom_guhring_germaniya"
+    },
+    {
+        "ID": "135",
+        "NAME": "Метчики для нарезания резьбы",
+        "IBLOCK_ID": "17",
+        "SORT": "170",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "184",
+        "CODE": "metchiki_dlya_narezaniya_rezby"
+    },
+    {
+        "ID": "136",
+        "NAME": "Развертки из быстрорежущей стали",
+        "IBLOCK_ID": "17",
+        "SORT": "100",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "razvertki_iz_bystrorezhushchey_stali_guhring_germaniya"
+    },
+    {
+        "ID": "137",
+        "NAME": "Развертки из твердого сплава GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "110",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "razvertki_iz_tverdogo_splava_guhring_germaniya"
+    },
+    {
+        "ID": "138",
+        "NAME": "Сверла ц\/х из быстрорежущей стали (HSS, HSCo, HSS-E-PM) GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "140",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "sverla_ts_kh_iz_bystrorezhushchey_stali_hss_hsco_hss_e_pm_guhring_germaniya"
+    },
+    {
+        "ID": "139",
+        "NAME": "Зенковки GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "100",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "183",
+        "CODE": "zenkovki_guhring_germaniya"
+    },
+    {
+        "ID": "140",
+        "NAME": "Фрезы из быстрорежущей стали с цилиндрическим хвостовиком, GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "190",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_iz_bystrorezhushchey_stali_s_tsilindricheskim_khvostovikom_guhring_germaniya"
+    },
+    {
+        "ID": "141",
+        "NAME": "Резьбофрезы",
+        "IBLOCK_ID": "17",
+        "SORT": "220",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "184",
+        "CODE": "rezbofrezy_guhring_germaniya"
+    },
+    {
+        "ID": "397",
+        "NAME": "Глубиномеры",
+        "IBLOCK_ID": "17",
+        "SORT": "620",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "147",
+        "CODE": "glubinomery"
+    },
+    {
+        "ID": "142",
+        "NAME": "Сверла ц\/х из твердого сплава GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "sverla_ts_kh_iz_tverdogo_splava_guhring_germaniya"
+    },
+    {
+        "ID": "398",
+        "NAME": "Граммометры",
+        "IBLOCK_ID": "17",
+        "SORT": "630",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "147",
+        "CODE": "grammometry"
+    },
+    {
+        "ID": "399",
+        "NAME": "Кронциркули",
+        "IBLOCK_ID": "17",
+        "SORT": "640",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "147",
+        "CODE": "krontsirkuli_1"
+    },
+    {
+        "ID": "400",
+        "NAME": "Толщиномеры",
+        "IBLOCK_ID": "17",
+        "SORT": "650",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "147",
+        "CODE": "tolshchinomery"
+    },
+    {
+        "ID": "401",
+        "NAME": "Угломеры",
+        "IBLOCK_ID": "17",
+        "SORT": "660",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "147",
+        "CODE": "uglomery"
+    },
+    {
+        "ID": "402",
+        "NAME": "Индикаторы цифровые",
+        "IBLOCK_ID": "17",
+        "SORT": "540",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "149",
+        "CODE": "indikatory_tsifrovye"
+    },
+    {
+        "ID": "403",
+        "NAME": "Индикаторы рычажно-зубчатые",
+        "IBLOCK_ID": "17",
+        "SORT": "550",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "149",
+        "CODE": "indikatory_rychazhno_zubchatye"
+    },
+    {
+        "ID": "404",
+        "NAME": "Индикаторы часового типа",
+        "IBLOCK_ID": "17",
+        "SORT": "560",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "149",
+        "CODE": "indikatory_chasovogo_tipa"
+    },
+    {
+        "ID": "405",
+        "NAME": "Принадлежности для штангенциркулей",
+        "IBLOCK_ID": "17",
+        "SORT": "710",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "146",
+        "CODE": "prinadlezhnosti_dlya_shtangentsirkuley"
+    },
+    {
+        "ID": "406",
+        "NAME": "Штангенциркули цифровые",
+        "IBLOCK_ID": "17",
+        "SORT": "720",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "146",
+        "CODE": "shtangentsirkuli_tsifrovye"
+    },
+    {
+        "ID": "407",
+        "NAME": "Штангенциркули нониусные",
+        "IBLOCK_ID": "17",
+        "SORT": "730",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "146",
+        "CODE": "shtangentsirkuli_noniusnye"
+    },
+    {
+        "ID": "410",
+        "NAME": "Сверла ц\/х левые из быстрорежущей стали (HSS, HSCo) GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "160",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "sverla_ts_kh_levye_iz_bystrorezhushchey_stali_hss_hsco_guhring_germaniya"
+    },
+    {
+        "ID": "411",
+        "NAME": "Сверла к\/х из быстрорежущей стали (HSS, HSCo, HSS-E-PM) GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "120",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "sverla_k_kh_iz_bystrorezhushchey_stali_hss_hsco_hss_e_pm_guhring_germaniya"
+    },
+    {
+        "ID": "416",
+        "NAME": "Плашки для нарезания резьбы",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "184",
+        "CODE": "plashki_dlya_narezaniya_rezby"
+    },
+    {
+        "ID": "162",
+        "NAME": "Фрезы для Т-образных пазов",
+        "IBLOCK_ID": "17",
+        "SORT": "170",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_dlya_t_obraznykh_pazov"
+    },
+    {
+        "ID": "163",
+        "NAME": "Фрезы торцевые насадные",
+        "IBLOCK_ID": "17",
+        "SORT": "230",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_tortsevye_nasadnye"
+    },
+    {
+        "ID": "419",
+        "NAME": "Измерительные микроскопы",
+        "IBLOCK_ID": "17",
+        "SORT": "710",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "418",
+        "CODE": "izmeritelnye_mikroskopy"
+    },
+    {
+        "ID": "164",
+        "NAME": "Фрезы цилиндрические насадные",
+        "IBLOCK_ID": "17",
+        "SORT": "240",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_tsilindricheskie_nasadnye"
+    },
+    {
+        "ID": "420",
+        "NAME": "Измерительные проекторы",
+        "IBLOCK_ID": "17",
+        "SORT": "720",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "418",
+        "CODE": "izmeritelnye_proektory"
+    },
+    {
+        "ID": "167",
+        "NAME": "Фрезы одноугловые насадные",
+        "IBLOCK_ID": "17",
+        "SORT": "220",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_odnouglovye_nasadnye"
+    },
+    {
+        "ID": "424",
+        "NAME": "Пластины напайные",
+        "IBLOCK_ID": "17",
+        "SORT": "370",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "422",
+        "CODE": "plastiny_napaynye"
+    },
+    {
+        "ID": "425",
+        "NAME": "Пластины сменные",
+        "IBLOCK_ID": "17",
+        "SORT": "380",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "422",
+        "CODE": "plastiny_smennye"
+    },
+    {
+        "ID": "426",
+        "NAME": "Заготовки для изготовления осевого инструмента",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "427",
+        "CODE": "zagotovki_dlya_izgotovleniya_osevogo_instrumenta_iz_tverdogo_splava"
+    },
+    {
+        "ID": "428",
+        "NAME": "Изделия для высадки, обработки металлов давлением",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "427",
+        "CODE": "izdeliya_dlya_vysadki_obrabotki_metallov_davleniem"
+    },
+    {
+        "ID": "429",
+        "NAME": "Изделия для бурового инструмента",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "427",
+        "CODE": "izdeliya_dlya_burovogo_instrumenta"
+    },
+    {
+        "ID": "174",
+        "NAME": "Фрезы дисковые",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_diskovye"
+    },
+    {
+        "ID": "175",
+        "NAME": "Фрезы зуборезные",
+        "IBLOCK_ID": "17",
+        "SORT": "180",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_zuboreznye"
+    },
+    {
+        "ID": "176",
+        "NAME": "Борфрезы",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "borfrezy"
+    },
+    {
+        "ID": "433",
+        "NAME": "Державки для сменных многогранных пластин",
+        "IBLOCK_ID": "17",
+        "SORT": "440",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "432",
+        "CODE": "derzhavki_dlya_smennykh_mnogogrannykh_plastin"
+    },
+    {
+        "ID": "178",
+        "NAME": "Фрезы для обработки пазов сегментных шпонок",
+        "IBLOCK_ID": "17",
+        "SORT": "160",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "185",
+        "CODE": "frezy_dlya_obrabotki_pazov_segmentnykh_shponok"
+    },
+    {
+        "ID": "434",
+        "NAME": "Метчики бесстружечные (раскатники)",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "184",
+        "CODE": "metchiki_besstruzhechnye_raskatniki"
+    },
+    {
+        "ID": "182",
+        "NAME": "Сверла со сменными пластинами GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "sverla_so_smennymi_plastinami_guhring_germaniya"
+    },
+    {
+        "ID": "448",
+        "NAME": "Сверла ц\/х из твердого сплава с каналами под СОЖ GUHRING (Германия)",
+        "IBLOCK_ID": "17",
+        "SORT": "400",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "172",
+        "CODE": "sverla_ts_kh_iz_tverdogo_splava_s_kanalami_pod_sozh_guhring_germaniya"
+    },
+    {
+        "ID": "194",
+        "NAME": "Диски шлифовальные по бетону",
+        "IBLOCK_ID": "17",
+        "SORT": "140",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "diski_shlifovalnye_po_betonu"
+    },
+    {
+        "ID": "195",
+        "NAME": "Бумага наждачная",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "bumaga_nazhdachnaya"
+    },
+    {
+        "ID": "196",
+        "NAME": "Круги (черепашки) шлифовальные на липучке по кафелю, диски для кругов",
+        "IBLOCK_ID": "17",
+        "SORT": "160",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "krugi_cherepashki_shlifovalnye_na_lipuchke_po_kafelyu_diski_dlya_krugov"
+    },
+    {
+        "ID": "197",
+        "NAME": "Круги зачистные по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "170",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "krugi_zachistnye_po_metallu"
+    },
+    {
+        "ID": "198",
+        "NAME": "Круги лепестковые",
+        "IBLOCK_ID": "17",
+        "SORT": "180",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "krugi_lepestkovye"
+    },
+    {
+        "ID": "199",
+        "NAME": "Круги шлифовальные на липучке, диски для кругов",
+        "IBLOCK_ID": "17",
+        "SORT": "190",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "krugi_shlifovalnye_na_lipuchke_diski_dlya_krugov"
+    },
+    {
+        "ID": "202",
+        "NAME": "Надфили алмазные",
+        "IBLOCK_ID": "17",
+        "SORT": "220",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "nadfili_almaznye"
+    },
+    {
+        "ID": "203",
+        "NAME": "Напильники",
+        "IBLOCK_ID": "17",
+        "SORT": "230",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "napilniki"
+    },
+    {
+        "ID": "204",
+        "NAME": "Напильники алмазные",
+        "IBLOCK_ID": "17",
+        "SORT": "240",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "napilniki_almaznye"
+    },
+    {
+        "ID": "206",
+        "NAME": "Шарошки, борфрезы",
+        "IBLOCK_ID": "17",
+        "SORT": "260",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "sharoshki_borfrezy"
+    },
+    {
+        "ID": "207",
+        "NAME": "Щетки по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "270",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "shchetki_po_metallu"
+    },
+    {
+        "ID": "208",
+        "NAME": "Надфили",
+        "IBLOCK_ID": "17",
+        "SORT": "220",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "193",
+        "CODE": "nadfili"
+    },
+    {
+        "ID": "223",
+        "NAME": "Линейки измерительные",
+        "IBLOCK_ID": "17",
+        "SORT": "290",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "222",
+        "CODE": "lineyki_izmeritelnye"
+    },
+    {
+        "ID": "224",
+        "NAME": "Рулетки",
+        "IBLOCK_ID": "17",
+        "SORT": "300",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "222",
+        "CODE": "ruletki"
+    },
+    {
+        "ID": "225",
+        "NAME": "Угольники, малки",
+        "IBLOCK_ID": "17",
+        "SORT": "310",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "222",
+        "CODE": "ugolniki_malki"
+    },
+    {
+        "ID": "226",
+        "NAME": "Уровни",
+        "IBLOCK_ID": "17",
+        "SORT": "320",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "222",
+        "CODE": "urovni"
+    },
+    {
+        "ID": "243",
+        "NAME": "Лотки сборные",
+        "IBLOCK_ID": "17",
+        "SORT": "500",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "242",
+        "CODE": "lotki_sbornye"
+    },
+    {
+        "ID": "244",
+        "NAME": "Ящики",
+        "IBLOCK_ID": "17",
+        "SORT": "510",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "242",
+        "CODE": "yashchiki"
+    },
+    {
+        "ID": "247",
+        "NAME": "Наборы инструментов универсальные",
+        "IBLOCK_ID": "17",
+        "SORT": "170",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "304",
+        "CODE": "nabory_instrumentov_universalnye"
+    },
+    {
+        "ID": "253",
+        "NAME": "Ножи технические, лезвия сменные",
+        "IBLOCK_ID": "17",
+        "SORT": "220",
+        "DEPTH_LEVEL": "3",
+        "IBLOCK_SECTION_ID": "275",
+        "CODE": "nozhi_tekhnicheskie_lezviya_smennye"
+    },
+    {
+        "ID": "258",
+        "NAME": "Зубила и штроберы по бетону",
+        "IBLOCK_ID": "17",
+        "SORT": "300",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "257",
+        "CODE": "zubila_i_shtrobery_po_betonu"
+    },
+    {
+        "ID": "259",
+        "NAME": "Коронки по бетону SDS+",
+        "IBLOCK_ID": "17",
+        "SORT": "310",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "257",
+        "CODE": "koronki_po_betonu_sds"
+    },
+    {
+        "ID": "260",
+        "NAME": "Сверла по бетону",
+        "IBLOCK_ID": "17",
+        "SORT": "320",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "257",
+        "CODE": "sverla_po_betonu"
+    },
+    {
+        "ID": "261",
+        "NAME": "Сверла центрирующие",
+        "IBLOCK_ID": "17",
+        "SORT": "330",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "257",
+        "CODE": "sverla_tsentriruyushchie"
+    },
+    {
+        "ID": "262",
+        "NAME": "Коронки кольцевые по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "150",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "264",
+        "CODE": "koronki_koltsevye_po_metallu"
+    },
+    {
+        "ID": "263",
+        "NAME": "Круги отрезные по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "160",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "264",
+        "CODE": "krugi_otreznye_po_metallu"
+    },
+    {
+        "ID": "265",
+        "NAME": "Сверла",
+        "IBLOCK_ID": "17",
+        "SORT": "310",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "264",
+        "CODE": "sverla"
+    },
+    {
+        "ID": "266",
+        "NAME": "Ножницы по металлу, кабелерезы",
+        "IBLOCK_ID": "17",
+        "SORT": "320",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "264",
+        "CODE": "nozhnitsy_po_metallu_kabelerezy"
+    },
+    {
+        "ID": "269",
+        "NAME": "Ножовки, полотна по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "350",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "264",
+        "CODE": "nozhovki_polotna_po_metallu"
+    },
+    {
+        "ID": "277",
+        "NAME": "Диски пильные по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "970",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "diski_pilnye_po_derevu"
+    },
+    {
+        "ID": "278",
+        "NAME": "Зенковки",
+        "IBLOCK_ID": "17",
+        "SORT": "980",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "zenkovki"
+    },
+    {
+        "ID": "279",
+        "NAME": "Коронки по дереву, адаптеры для коронок",
+        "IBLOCK_ID": "17",
+        "SORT": "990",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "koronki_po_derevu_adaptery_dlya_koronok"
+    },
+    {
+        "ID": "283",
+        "NAME": "Лобзики",
+        "IBLOCK_ID": "17",
+        "SORT": "1030",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "lobziki"
+    },
+    {
+        "ID": "284",
+        "NAME": "Наборы сверл по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "1040",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "nabory_sverl_po_derevu"
+    },
+    {
+        "ID": "285",
+        "NAME": "Ножовки",
+        "IBLOCK_ID": "17",
+        "SORT": "1050",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "nozhovki"
+    },
+    {
+        "ID": "286",
+        "NAME": "Рубанки",
+        "IBLOCK_ID": "17",
+        "SORT": "1060",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "rubanki"
+    },
+    {
+        "ID": "287",
+        "NAME": "Сверла перовые по дереву, удлинители для перовых сверл",
+        "IBLOCK_ID": "17",
+        "SORT": "1070",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "sverla_perovye_po_derevu_udliniteli_dlya_perovykh_sverl"
+    },
+    {
+        "ID": "290",
+        "NAME": "Сверла по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "1100",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "sverla_po_derevu"
+    },
+    {
+        "ID": "291",
+        "NAME": "Сверла под конфирмат",
+        "IBLOCK_ID": "17",
+        "SORT": "1110",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "sverla_pod_konfirmat"
+    },
+    {
+        "ID": "292",
+        "NAME": "Сверла спиральные по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "1120",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "sverla_spiralnye_po_derevu"
+    },
+    {
+        "ID": "293",
+        "NAME": "Сверла Форстнера, сверла многофункциональные",
+        "IBLOCK_ID": "17",
+        "SORT": "1130",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "sverla_forstnera_sverla_mnogofunktsionalnye"
+    },
+    {
+        "ID": "294",
+        "NAME": "Фрезы для работ по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "1140",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "276",
+        "CODE": "frezy_dlya_rabot_po_derevu"
+    },
+    {
+        "ID": "296",
+        "NAME": "Диски алмазные по стеклу и кафелю",
+        "IBLOCK_ID": "17",
+        "SORT": "1280",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "295",
+        "CODE": "diski_almaznye_po_steklu_i_kafelyu"
+    },
+    {
+        "ID": "297",
+        "NAME": "Коронки алмазные по стеклу и кафелю",
+        "IBLOCK_ID": "17",
+        "SORT": "1290",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "295",
+        "CODE": "koronki_almaznye_po_steklu_i_kafelyu"
+    },
+    {
+        "ID": "298",
+        "NAME": "Коронки карбидно-вольфрамовые по кафелю, адаптеры для коронок",
+        "IBLOCK_ID": "17",
+        "SORT": "1300",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "295",
+        "CODE": "koronki_karbidno_volframovye_po_kafelyu_adaptery_dlya_koronok"
+    },
+    {
+        "ID": "301",
+        "NAME": "Ролики для плиткорезов, стеклорезы",
+        "IBLOCK_ID": "17",
+        "SORT": "1330",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "295",
+        "CODE": "roliki_dlya_plitkorezov_steklorezy"
+    },
+    {
+        "ID": "302",
+        "NAME": "Сверла по стеклу и кафелю",
+        "IBLOCK_ID": "17",
+        "SORT": "1340",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "295",
+        "CODE": "sverla_po_steklu_i_kafelyu"
+    },
+    {
+        "ID": "303",
+        "NAME": "Струна карбидно-вольфрамовая",
+        "IBLOCK_ID": "17",
+        "SORT": "1350",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "295",
+        "CODE": "struna_karbidno_volframovaya"
+    },
+    {
+        "ID": "306",
+        "NAME": "Адаптеры для бит",
+        "IBLOCK_ID": "17",
+        "SORT": "1380",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "305",
+        "CODE": "adaptery_dlya_bit"
+    },
+    {
+        "ID": "307",
+        "NAME": "Биты",
+        "IBLOCK_ID": "17",
+        "SORT": "1390",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "305",
+        "CODE": "bity"
+    },
+    {
+        "ID": "308",
+        "NAME": "Отвертки с битами в комплекте",
+        "IBLOCK_ID": "17",
+        "SORT": "1400",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "305",
+        "CODE": "otvertki_s_bitami_v_komplekte"
+    },
+    {
+        "ID": "309",
+        "NAME": "Рукоятки отверточные",
+        "IBLOCK_ID": "17",
+        "SORT": "1410",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "305",
+        "CODE": "rukoyatki_otvertochnye"
+    },
+    {
+        "ID": "312",
+        "NAME": "Головки торцевые",
+        "IBLOCK_ID": "17",
+        "SORT": "1440",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "golovki_tortsevye_1"
+    },
+    {
+        "ID": "313",
+        "NAME": "Головки торцевые глубокие",
+        "IBLOCK_ID": "17",
+        "SORT": "1450",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "golovki_tortsevye_glubokie"
+    },
+    {
+        "ID": "314",
+        "NAME": "Головки торцевые свечные",
+        "IBLOCK_ID": "17",
+        "SORT": "1460",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "golovki_tortsevye_svechnye"
+    },
+    {
+        "ID": "315",
+        "NAME": "Головки торцевые ударные",
+        "IBLOCK_ID": "17",
+        "SORT": "1470",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "golovki_tortsevye_udarnye"
+    },
+    {
+        "ID": "316",
+        "NAME": "Головки торцевые, внешний TORX",
+        "IBLOCK_ID": "17",
+        "SORT": "1480",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "golovki_tortsevye_vneshniy_torx"
+    },
+    {
+        "ID": "317",
+        "NAME": "Насадки",
+        "IBLOCK_ID": "17",
+        "SORT": "1490",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "nasadki"
+    },
+    {
+        "ID": "319",
+        "NAME": "Заклепки",
+        "IBLOCK_ID": "17",
+        "SORT": "1510",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "318",
+        "CODE": "zaklepki"
+    },
+    {
+        "ID": "320",
+        "NAME": "Заклепочники",
+        "IBLOCK_ID": "17",
+        "SORT": "1520",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "318",
+        "CODE": "zaklepochniki"
+    },
+    {
+        "ID": "325",
+        "NAME": "Ключи TORX",
+        "IBLOCK_ID": "17",
+        "SORT": "1570",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_torx"
+    },
+    {
+        "ID": "326",
+        "NAME": "Ключи гаечные двухсторонние",
+        "IBLOCK_ID": "17",
+        "SORT": "1580",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_gaechnye_dvukhstoronnie"
+    },
+    {
+        "ID": "327",
+        "NAME": "Ключи гаечные комбинированные",
+        "IBLOCK_ID": "17",
+        "SORT": "1590",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_gaechnye_kombinirovannye"
+    },
+    {
+        "ID": "328",
+        "NAME": "Ключи динамометрические",
+        "IBLOCK_ID": "17",
+        "SORT": "1600",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_dinamometricheskie"
+    },
+    {
+        "ID": "329",
+        "NAME": "Ключи разводные",
+        "IBLOCK_ID": "17",
+        "SORT": "1610",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_razvodnye"
+    },
+    {
+        "ID": "330",
+        "NAME": "Ключи разрезные",
+        "IBLOCK_ID": "17",
+        "SORT": "1620",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_razreznye"
+    },
+    {
+        "ID": "331",
+        "NAME": "Ключи трубные",
+        "IBLOCK_ID": "17",
+        "SORT": "1630",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_trubnye"
+    },
+    {
+        "ID": "332",
+        "NAME": "Ключи шестигранные",
+        "IBLOCK_ID": "17",
+        "SORT": "1640",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_shestigrannye"
+    },
+    {
+        "ID": "335",
+        "NAME": "Отвертки индикаторные",
+        "IBLOCK_ID": "17",
+        "SORT": "1670",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "334",
+        "CODE": "otvertki_indikatornye"
+    },
+    {
+        "ID": "336",
+        "NAME": "Отвертки крестовые PH",
+        "IBLOCK_ID": "17",
+        "SORT": "1680",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "334",
+        "CODE": "otvertki_krestovye_ph"
+    },
+    {
+        "ID": "339",
+        "NAME": "Отвертки шлицевые",
+        "IBLOCK_ID": "17",
+        "SORT": "1710",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "334",
+        "CODE": "otvertki_shlitsevye"
+    },
+    {
+        "ID": "343",
+        "NAME": "Пистолеты стержневые",
+        "IBLOCK_ID": "17",
+        "SORT": "1750",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "342",
+        "CODE": "pistolety_sterzhnevye"
+    },
+    {
+        "ID": "344",
+        "NAME": "Стержни",
+        "IBLOCK_ID": "17",
+        "SORT": "1760",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "342",
+        "CODE": "sterzhni"
+    },
+    {
+        "ID": "347",
+        "NAME": "Скобы",
+        "IBLOCK_ID": "17",
+        "SORT": "1790",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "346",
+        "CODE": "skoby"
+    },
+    {
+        "ID": "348",
+        "NAME": "Степлеры",
+        "IBLOCK_ID": "17",
+        "SORT": "1800",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "346",
+        "CODE": "steplery"
+    },
+    {
+        "ID": "349",
+        "NAME": "Съемники",
+        "IBLOCK_ID": "17",
+        "SORT": "1810",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "310",
+        "CODE": "semniki"
+    },
+    {
+        "ID": "351",
+        "NAME": "Зажимы с фиксатором",
+        "IBLOCK_ID": "17",
+        "SORT": "1830",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "350",
+        "CODE": "zazhimy_s_fiksatorom"
+    },
+    {
+        "ID": "352",
+        "NAME": "Прессы ручные",
+        "IBLOCK_ID": "17",
+        "SORT": "1840",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "350",
+        "CODE": "pressy_ruchnye"
+    },
+    {
+        "ID": "353",
+        "NAME": "Струбцины",
+        "IBLOCK_ID": "17",
+        "SORT": "1850",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "350",
+        "CODE": "strubtsiny"
+    },
+    {
+        "ID": "354",
+        "NAME": "Тиски",
+        "IBLOCK_ID": "17",
+        "SORT": "1860",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "350",
+        "CODE": "tiski"
+    },
+    {
+        "ID": "356",
+        "NAME": "Адаптеры",
+        "IBLOCK_ID": "17",
+        "SORT": "1880",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "adaptery"
+    },
+    {
+        "ID": "357",
+        "NAME": "Воротки",
+        "IBLOCK_ID": "17",
+        "SORT": "1890",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "vorotki"
+    },
+    {
+        "ID": "358",
+        "NAME": "Переходники",
+        "IBLOCK_ID": "17",
+        "SORT": "1900",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "perekhodniki"
+    },
+    {
+        "ID": "359",
+        "NAME": "Рем.комплекты для трещоток",
+        "IBLOCK_ID": "17",
+        "SORT": "1910",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "rem_komplekty_dlya_treshchotok"
+    },
+    {
+        "ID": "360",
+        "NAME": "Трещотки",
+        "IBLOCK_ID": "17",
+        "SORT": "1920",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "treshchotki"
+    },
+    {
+        "ID": "361",
+        "NAME": "Удлинители",
+        "IBLOCK_ID": "17",
+        "SORT": "1930",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "udliniteli"
+    },
+    {
+        "ID": "362",
+        "NAME": "Шарниры карданные",
+        "IBLOCK_ID": "17",
+        "SORT": "1940",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "sharniry_kardannye"
+    },
+    {
+        "ID": "364",
+        "NAME": "Бокорезы",
+        "IBLOCK_ID": "17",
+        "SORT": "1960",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "bokorezy"
+    },
+    {
+        "ID": "365",
+        "NAME": "Клещи строительные, клещи для снятия изоляции",
+        "IBLOCK_ID": "17",
+        "SORT": "1970",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "kleshchi_stroitelnye_kleshchi_dlya_snyatiya_izolyatsii"
+    },
+    {
+        "ID": "366",
+        "NAME": "Круглогубцы",
+        "IBLOCK_ID": "17",
+        "SORT": "1980",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "kruglogubtsy"
+    },
+    {
+        "ID": "367",
+        "NAME": "Пассатижи, плоскогубцы",
+        "IBLOCK_ID": "17",
+        "SORT": "1990",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "passatizhi_ploskogubtsy"
+    },
+    {
+        "ID": "368",
+        "NAME": "Просекатели для работы с профилем под гипсокартон",
+        "IBLOCK_ID": "17",
+        "SORT": "2000",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "prosekateli_dlya_raboty_s_profilem_pod_gipsokarton"
+    },
+    {
+        "ID": "369",
+        "NAME": "Щипцы для разжима стопорных колец",
+        "IBLOCK_ID": "17",
+        "SORT": "2010",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "shchiptsy_dlya_razzhima_stopornykh_kolets"
+    },
+    {
+        "ID": "370",
+        "NAME": "Длинногубцы",
+        "IBLOCK_ID": "17",
+        "SORT": "2020",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "363",
+        "CODE": "dlinnogubtsy"
+    },
+    {
+        "ID": "387",
+        "NAME": "Воротки для метчиков",
+        "IBLOCK_ID": "17",
+        "SORT": "1810",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "vorotki_dlya_metchikov"
+    },
+    {
+        "ID": "388",
+        "NAME": "Воротки для плашек",
+        "IBLOCK_ID": "17",
+        "SORT": "1820",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "355",
+        "CODE": "vorotki_dlya_plashek"
+    },
+    {
+        "ID": "153",
+        "NAME": "Сверла для обработки титана",
+        "IBLOCK_ID": "17",
+        "SORT": "190",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "138",
+        "CODE": "sverla_dlya_obrabotki_titana"
+    },
+    {
+        "ID": "412",
+        "NAME": "Развертки машинные с коническим хвостовиком",
+        "IBLOCK_ID": "17",
+        "SORT": "240",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "136",
+        "CODE": "razvertki_mashinnye_s_konicheskim_khvostovikom"
+    },
+    {
+        "ID": "413",
+        "NAME": "Развертки машинные насадные",
+        "IBLOCK_ID": "17",
+        "SORT": "250",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "136",
+        "CODE": "razvertki_mashinnye_nasadnye_guhring_germaniya"
+    },
+    {
+        "ID": "414",
+        "NAME": "Развертки с цилиндрическим хвостовиком",
+        "IBLOCK_ID": "17",
+        "SORT": "260",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "136",
+        "CODE": "razvertki_s_tsilindricheskim_khvostovikom"
+    },
+    {
+        "ID": "160",
+        "NAME": "Фрезы дисковые пазовые",
+        "IBLOCK_ID": "17",
+        "SORT": "220",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "174",
+        "CODE": "frezy_diskovye_pazovye"
+    },
+    {
+        "ID": "161",
+        "NAME": "Фрезы дисковые трехсторонние",
+        "IBLOCK_ID": "17",
+        "SORT": "230",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "174",
+        "CODE": "frezy_diskovye_trekhstoronnie"
+    },
+    {
+        "ID": "165",
+        "NAME": "Фрезы дисковые зубонарезные модульные",
+        "IBLOCK_ID": "17",
+        "SORT": "250",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "175",
+        "CODE": "frezy_diskovye_zubonareznye_modulnye"
+    },
+    {
+        "ID": "166",
+        "NAME": "Фрезы червячные модульные",
+        "IBLOCK_ID": "17",
+        "SORT": "300",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "175",
+        "CODE": "frezy_chervyachnye_modulnye"
+    },
+    {
+        "ID": "168",
+        "NAME": "Фрезы радиусные",
+        "IBLOCK_ID": "17",
+        "SORT": "1300",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "174",
+        "CODE": "frezy_radiusnye"
+    },
+    {
+        "ID": "169",
+        "NAME": "Фрезы червячные для нарезания зубьев звездочек",
+        "IBLOCK_ID": "17",
+        "SORT": "320",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "175",
+        "CODE": "frezy_chervyachnye_dlya_narezaniya_zubev_zvezdochek"
+    },
+    {
+        "ID": "170",
+        "NAME": "Фрезы червячные для шлицевых валов с прямобочным профилем",
+        "IBLOCK_ID": "17",
+        "SORT": "330",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "175",
+        "CODE": "frezy_chervyachnye_dlya_shlitsevykh_valov_s_pryamobochnym_profilem"
+    },
+    {
+        "ID": "171",
+        "NAME": "Фрезы дисковые трехсторонние со вставными ножами",
+        "IBLOCK_ID": "17",
+        "SORT": "250",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "174",
+        "CODE": "frezy_diskovye_trekhstoronnie_so_vstavnymi_nozhami"
+    },
+    {
+        "ID": "200",
+        "NAME": "Диски для кругов шлифовальных",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "199",
+        "CODE": "diski_dlya_krugov_shlifovalnykh"
+    },
+    {
+        "ID": "201",
+        "NAME": "Круги шлифовальные на липучке",
+        "IBLOCK_ID": "17",
+        "SORT": "210",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "199",
+        "CODE": "krugi_shlifovalnye_na_lipuchke"
+    },
+    {
+        "ID": "731",
+        "NAME": "Наборы бит и насадок торцевых",
+        "IBLOCK_ID": "17",
+        "SORT": "350",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "305",
+        "CODE": "nabory_bit_i_nasadok_tortsevykh"
+    },
+    {
+        "ID": "732",
+        "NAME": "Ключи накидные",
+        "IBLOCK_ID": "17",
+        "SORT": "500",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "324",
+        "CODE": "klyuchi_nakidnye"
+    },
+    {
+        "ID": "246",
+        "NAME": "Наборы головок",
+        "IBLOCK_ID": "17",
+        "SORT": "160",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "311",
+        "CODE": "nabory_golovok"
+    },
+    {
+        "ID": "250",
+        "NAME": "Наборы метчиков и плашек",
+        "IBLOCK_ID": "17",
+        "SORT": "200",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "264",
+        "CODE": "nabory_metchikov_i_plashek"
+    },
+    {
+        "ID": "251",
+        "NAME": "Наборы отверток",
+        "IBLOCK_ID": "17",
+        "SORT": "210",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "334",
+        "CODE": "nabory_otvertok"
+    },
+    {
+        "ID": "252",
+        "NAME": "Буры по бетону SDS+",
+        "IBLOCK_ID": "17",
+        "SORT": "130",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "257",
+        "CODE": "bury_po_betonu_sds"
+    },
+    {
+        "ID": "254",
+        "NAME": "Лезвия сменные",
+        "IBLOCK_ID": "17",
+        "SORT": "230",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "253",
+        "CODE": "lezviya_smennye"
+    },
+    {
+        "ID": "255",
+        "NAME": "Ножи технические",
+        "IBLOCK_ID": "17",
+        "SORT": "240",
+        "DEPTH_LEVEL": "4",
+        "IBLOCK_SECTION_ID": "253",
+        "CODE": "nozhi_tekhnicheskie"
+    },
+    {
+        "ID": "267",
+        "NAME": "Кабелерезы",
+        "IBLOCK_ID": "17",
+        "SORT": "330",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "266",
+        "CODE": "kabelerezy"
+    },
+    {
+        "ID": "268",
+        "NAME": "Ножницы по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "340",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "266",
+        "CODE": "nozhnitsy_po_metallu"
+    },
+    {
+        "ID": "270",
+        "NAME": "Ножовки по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "360",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "269",
+        "CODE": "nozhovki_po_metallu"
+    },
+    {
+        "ID": "271",
+        "NAME": "Полотна для ножовок",
+        "IBLOCK_ID": "17",
+        "SORT": "370",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "269",
+        "CODE": "polotna_dlya_nozhovok"
+    },
+    {
+        "ID": "272",
+        "NAME": "Сверла с цилиндрическим хвостовиком HSS",
+        "IBLOCK_ID": "17",
+        "SORT": "380",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "265",
+        "CODE": "sverla_s_tsilindricheskim_khvostovikom_hss"
+    },
+    {
+        "ID": "273",
+        "NAME": "Сверла ступенчатые по металлу",
+        "IBLOCK_ID": "17",
+        "SORT": "390",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "265",
+        "CODE": "sverla_stupenchatye_po_metallu"
+    },
+    {
+        "ID": "280",
+        "NAME": "Адаптеры для коронок",
+        "IBLOCK_ID": "17",
+        "SORT": "1000",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "279",
+        "CODE": "adaptery_dlya_koronok"
+    },
+    {
+        "ID": "281",
+        "NAME": "Венцы пильные в наборе",
+        "IBLOCK_ID": "17",
+        "SORT": "1010",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "279",
+        "CODE": "ventsy_pilnye_v_nabore"
+    },
+    {
+        "ID": "282",
+        "NAME": "Коронки по дереву",
+        "IBLOCK_ID": "17",
+        "SORT": "1020",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "279",
+        "CODE": "koronki_po_derevu"
+    },
+    {
+        "ID": "288",
+        "NAME": "Сверла перовые",
+        "IBLOCK_ID": "17",
+        "SORT": "1080",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "287",
+        "CODE": "sverla_perovye"
+    },
+    {
+        "ID": "289",
+        "NAME": "Удлинители перовых сверл",
+        "IBLOCK_ID": "17",
+        "SORT": "1090",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "287",
+        "CODE": "udliniteli_perovykh_sverl"
+    },
+    {
+        "ID": "299",
+        "NAME": "Адаптеры для коронок",
+        "IBLOCK_ID": "17",
+        "SORT": "1310",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "298",
+        "CODE": "adaptery_dlya_koronok_1"
+    },
+    {
+        "ID": "300",
+        "NAME": "Коронки корбидно-вольфрамовые",
+        "IBLOCK_ID": "17",
+        "SORT": "1320",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "298",
+        "CODE": "koronki_korbidno_volframovye"
+    },
+    {
+        "ID": "337",
+        "NAME": "Отвертки крестовые изолированные",
+        "IBLOCK_ID": "17",
+        "SORT": "1690",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "336",
+        "CODE": "otvertki_krestovye_izolirovannye"
+    },
+    {
+        "ID": "338",
+        "NAME": "Отвертки крестовые ударные",
+        "IBLOCK_ID": "17",
+        "SORT": "1700",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "336",
+        "CODE": "otvertki_krestovye_udarnye"
+    },
+    {
+        "ID": "340",
+        "NAME": "Отвертки шлицевые изолированные",
+        "IBLOCK_ID": "17",
+        "SORT": "1720",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "339",
+        "CODE": "otvertki_shlitsevye_izolirovannye"
+    },
+    {
+        "ID": "341",
+        "NAME": "Отвертки шлицевые ударные",
+        "IBLOCK_ID": "17",
+        "SORT": "1730",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "339",
+        "CODE": "otvertki_shlitsevye_udarnye"
+    },
+    {
+        "ID": "733",
+        "NAME": "Наборы сверл",
+        "IBLOCK_ID": "17",
+        "SORT": "330",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "265",
+        "CODE": "nabory_sverl"
+    },
+    {
+        "ID": "734",
+        "NAME": "Сверла с цилиндрическим хвостовиком HSS Co",
+        "IBLOCK_ID": "17",
+        "SORT": "350",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "265",
+        "CODE": "sverla_s_tsilindricheskim_khvostovikom_hss_co"
+    },
+    {
+        "ID": "248",
+        "NAME": "Наборы ключей комбинированных",
+        "IBLOCK_ID": "17",
+        "SORT": "180",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "327",
+        "CODE": "nabory_klyuchey_kombinirovannykh"
+    },
+    {
+        "ID": "249",
+        "NAME": "Наборы ключей гаечных двухсторонних",
+        "IBLOCK_ID": "17",
+        "SORT": "190",
+        "DEPTH_LEVEL": "5",
+        "IBLOCK_SECTION_ID": "326",
+        "CODE": "nabory_klyuchey_gaechnykh_dvukhstoronnikh"
+    }
+]
