@@ -46,7 +46,7 @@ return function (App $app) {
         //     $result[] = [...$item];
         //   }
         // return $resp->is200Response($response, $result);
-        return $resp->is200Response($response, "ok");
+        return $resp->is200Response($response, "123");
     });
 
     $app->get("/catalog", function ($request, $response) {
