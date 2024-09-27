@@ -153,6 +153,8 @@ return function (App $app) {
         $app->post("/login", [\App\Controllers\AuthController::class, "Login"]);
         $app->post("/logout", [\App\Controllers\AuthController::class, "Logout"]);
         $app->post("/register", [\App\Controllers\AuthController::class, "Register"]);
+        $app->post("/confirm_email", [\App\Controllers\AuthController::class, "ConfirmEmail"]);
+
         $app->post("/change_password", [\App\Controllers\AuthController::class, "ChangePassword"]);
     });
 

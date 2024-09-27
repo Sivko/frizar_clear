@@ -4,6 +4,12 @@ use Bitrix\Main;
 
 CModule::IncludeModule('currency');
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
+header('Access-Control-Allow-Methods: GET, POST');
+\Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
+
 if (!function_exists('getCurrency')) {
   function getCurrency()
   {
@@ -40,6 +46,7 @@ function custom_mail($to, $subject, $message, $additionalHeaders = '')
   $mail->Username   = 'limpopo113@yandex.ru';
   // $mail->Password   = '!@#$1234QWERasdf';    
   $mail->Password   = 'dbhschdvciddxjoh';
+  // $mail->Password   = '';
   $mail->SMTPSecure = 'ssl';
   $mail->Port   = 465;
 

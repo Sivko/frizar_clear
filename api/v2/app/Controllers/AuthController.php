@@ -62,13 +62,21 @@ class AuthController
             $user_confirm_password,
             $user_email,
         );
-        if ($user->IsAuthorized()) {
-            $responseMessage = strip_tags($result["MESSAGE"]);
+
+        if ($result["TYPE"] == "OK") {
+            $responseMessage = ["success" => true, "message" => "Отправлено письмо с кодом для подтверждения", "system" => ["userId" => CUser::GetByLogin($user_login)->Fetch()["ID"]]];
             return $this->customResponse->is200Response($response, $responseMessage);
         } else {
             $responseMessage = strip_tags($result["MESSAGE"]);
             return $this->customResponse->is400Response($response, $responseMessage);
         }
+        // if ($user->IsAuthorized()) {
+        //     $responseMessage = ["success" => true, "message" => strip_tags($result["MESSAGE"])];
+        //     return $this->customResponse->is200Response($response, $responseMessage);
+        // } else {
+        //     $responseMessage = strip_tags($result["MESSAGE"]);
+        //     return $this->customResponse->is400Response($response, $responseMessage);
+        // }
     }
 
     public function Login(Request $request, Response $response)
@@ -119,6 +127,41 @@ class AuthController
         } else {
             return $this->customResponse->is400Response($response, "Нет пользователя с таким Email");
         }
+    }
+
+    public function ConfirmEmail(Request $request, Response $response)
+    {
+        $userId = CustomRequestHandler::getParam($request, "userId");
+        $code = CustomRequestHandler::getParam($request, "code");
+        $rsUser = CUser::GetByID($userId);
+
+        if ($arResult["USER"] = $rsUser->GetNext()) {
+            if ($arResult["USER"]["ACTIVE"] === "Y") {
+                $msg = "Регистрация пользователя уже подтверждена.";
+            } else {
+                if ($code == '') {
+                    $msg = "Не указан код подтверждения регистрации.";
+                } elseif ($code !== $arResult["USER"]["~CONFIRM_CODE"]) {
+                    $msg = "Указан неверный код подтверждения регистрации.";
+                } else {
+                    $obUser = new CUser;
+                    $obUser->Update($userId, array("ACTIVE" => "Y", "CONFIRM_CODE" => ""));
+                    $rsUser = CUser::GetByID($userId);
+                    $arResult["USER_ACTIVE"] = $rsUser->GetNext();
+                    if ($arResult["USER_ACTIVE"] && $arResult["USER_ACTIVE"]["ACTIVE"] === "Y") {
+                        $msg = "Регистрация пользователя успешно подтверждена.";
+                    } else {
+                        $msg = "Во время подтверждения регистрации произошла ошибка. Обратитесь к администрации сервера.";
+                    }
+                }
+            }
+        } else {
+            $msg = "Пользователь не найден.";
+        }
+        if ($msg == "Регистрация пользователя успешно подтверждена.") {
+            return $this->customResponse->is200ResponseStatus($response, $msg);
+        }
+        return $this->customResponse->is400Response($response, $msg);
     }
 
     //     public function EmailExist($email)
