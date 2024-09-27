@@ -1,6 +1,5 @@
 /*
 /*/
-!.gitignore
 !/api/
 !push_backend.sh
 !docker-compose.yml
