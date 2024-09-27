@@ -24,10 +24,12 @@ class MenuController
   }
 
 
-  public static function get($any)
+  public static function get($request)
   {
+    $productId = $request->getQueryParams()['productId'];
+    
     $filter = [
-      'IBLOCK_ID' => $_ENV["ID_IBLOCK_PRODUCT"],
+      'IBLOCK_ID' => $productId,
       'ACTIVE' => 'Y',
       'INCLUDE_SUBSECTIONS' => 'N',
     ];

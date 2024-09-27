@@ -32,10 +32,13 @@ function custom_mail($to, $subject, $message, $additionalHeaders = '')
   
   $mail = new PHPMailer\PHPMailer\PHPMailer();
   $mail->isSMTP();                   
-  $mail->Host   = 'smtp.beget.com';  
+  // $mail->Host   = 'smtp.beget.com';  
+  $mail->Host   = 'smtp.yandex.ru';
   $mail->SMTPAuth   = true;          
-  $mail->Username   = 'abc@frizar.ru';       
-  $mail->Password   = '!@#$1234QWERasdf';    
+  // $mail->Username   = 'abc@frizar.ru';
+  $mail->Username   = 'limpopo113@yandex.ru';
+  // $mail->Password   = '!@#$1234QWERasdf';    
+  $mail->Password   = 'dbhschdvciddxjoh';    
   $mail->SMTPSecure = 'ssl';         
   $mail->Port   = 465;               
   
@@ -48,8 +51,10 @@ function custom_mail($to, $subject, $message, $additionalHeaders = '')
   
   $mail->Subject = $subject;
   $mail->Body    = $message;
-  $mail->From    = 'abc@frizar.ru';
-  $mail->FromName = 'Your Name'; // Если хотите добавить имя отправителя
+  // $mail->From    = 'abc@frizar.ru';
+  $mail->From    = 'limpopo113@yandex.ru';
+  // $mail->FromName = 'Your Name'; // Если хотите добавить имя отправителя
+  $mail->FromName = 'FromName'; // Если хотите добавить имя отправителя
   
   $mail->send();
 }
