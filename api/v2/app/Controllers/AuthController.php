@@ -62,27 +62,6 @@ class AuthController
             $user_confirm_password,
             $user_email,
         );
-        //     $ID = $this->user->Add([
-        //         "EMAIL"             => $user_email,
-        //         "LOGIN"             => $user_login,
-        //         "NAME"              => $user_name,
-        //         "LAST_NAME"         => $user_last_name,
-        //         "rray(
-        //   'debug' => true,ACTIVE"            => "Y",
-        //         "GROUP_ID"          => array(6, 10),
-        //         "PASSWORD"          => $user_password,
-        //         "CONFIRM_PASSWORD"  => $user_confirm_password,
-        //     ]);
-
-        // if (intval($ID) > 0) {
-        //     $this->user->Authorize($ID);
-        //     $responseMessage = ["success" => true, "message" => "Регистрация прошла успешно!"];
-        //     return $this->customResponse->is200Response($response, $responseMessage);
-        // } else {
-        //     // $responseMessage = strip_tags($result["MESSAGE"]);
-        //     $responseMessage = strip_tags($this->user->LAST_ERROR);
-        //     return $this->customResponse->is400Response($response, $responseMessage);
-        // }
         if ($user->IsAuthorized()) {
             $responseMessage = strip_tags($result["MESSAGE"]);
             return $this->customResponse->is200Response($response, $responseMessage);
