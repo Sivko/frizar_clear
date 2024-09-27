@@ -46,7 +46,7 @@ return function (App $app) {
         //     $result[] = [...$item];
         //   }
         // return $resp->is200Response($response, $result);
-        return $resp->is200Response($response, "123");
+        return $resp->is200Response($response, "ok");
     });
 
     $app->get("/catalog", function ($request, $response) {
@@ -138,8 +138,8 @@ return function (App $app) {
         });
         $app->post("/update", function ($request, Response $response) {
             $resp = new CustomResponse();
-            BasketController::updateProduct($request);
-            return $resp->is200Response($response, "Ok");
+            $result = BasketController::updateProduct($request);
+            return $resp->is200Response($response, $result);
         });
         $app->post("/create-order", function ($request, Response $response) {
             $resp = new CustomResponse();

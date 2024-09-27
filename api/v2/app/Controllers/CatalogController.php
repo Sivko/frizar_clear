@@ -322,6 +322,12 @@ class CatalogController
     return $rules;
   }
 
+  public static function getPrice($productID, $quantity)
+  {
+    $arPrice = CCatalogProduct::GetOptimalPrice($productID, $quantity, []);
+    return $arPrice["RESULT_PRICE"]["BASE_PRICE"];
+  }
+
   public static function getItemsByFilter($request, $response)
   {
     $tositemap =  $request->getQueryParams()['tositemap'];
@@ -362,7 +368,8 @@ class CatalogController
         "image" => $item["PREVIEW_PICTURE"] ? CFile::GetPath($item["PREVIEW_PICTURE"]) : CFile::GetPath($item["DETAIL_PICTURE"]),
         "images" => $tositemap ?  "" : self::getImages($item["PROPERTY_MORE_PHOTO_VALUE"]),
         // "price" => $tositemap ?  "" : $item["PROPERTY_MINIMUM_PRICE_VALUE"],
-        "price" => $tositemap ?  "" : \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $item["ID"], "CURRENCY" => "RUB"]])->fetch(),
+        // "price" => $tositemap ?  "" : \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $item["ID"], "CURRENCY" => "RUB"]])->fetch(),
+        "price" => self::getPrice($item["ID"], 1),
         "link" => $tositemap ?  "" : self::createLinkByRules($section["DETAIL_PAGE_URL"], $item["CODE"], $item["IBLOCK_SECTION_ID"], $item["IBLOCK_ID"]),
       ];
     }
@@ -428,7 +435,8 @@ class CatalogController
       "properties" => CatalogController::getNotNullProperties($section["ID"]),
       "image" => CFile::GetPath($section["DETAIL_PICTURE"]),
       "images" => self::getImages($section["PROPERTY_MORE_PHOTO_VALUE"]),
-      "price" => \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $section["ID"], "CURRENCY" => "RUB"]])->fetch(),
+      // "price" => \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $section["ID"], "CURRENCY" => "RUB"]])->fetch(),
+      "price" => self::getPrice($section["ID"], 1),
       "link" => self::createLinkByRules($section["DETAIL_PAGE_URL"], $section["CODE"], $section["IBLOCK_SECTION_ID"], $section["IBLOCK_ID"]),
     ];
     $_items = CIBlockElement::GetList([$orderBy => $order], [...$el_filter, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => $offset, 'iNumPage' => $page], ["*"]);
@@ -447,7 +455,8 @@ class CatalogController
         "image" => CFile::GetPath($item["DETAIL_PICTURE"]),
         "images" => self::getImages($item["PROPERTY_MORE_PHOTO_VALUE"]),
         // "price" => $item["PROPERTY_MINIMUM_PRICE_VALUE"],
-        "price" => \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $item["ID"], "CURRENCY" => "RUB"]])->fetch(),
+        // "price" => \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $item["ID"], "CURRENCY" => "RUB"]])->fetch(),
+        "price" => self::getPrice($item["ID"], 1),
         "link" => self::createLinkByRules($section["DETAIL_PAGE_URL"], $item["CODE"], $item["IBLOCK_SECTION_ID"]),
       ];
     }

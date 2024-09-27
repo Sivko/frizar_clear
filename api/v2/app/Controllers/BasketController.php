@@ -40,8 +40,18 @@ class BasketController
 
   public static function getBasket()
   {
+    // CSaleBasket::DeleteAll(CSaleBasket::GetBasketUserID());
+
+
     $fuser = Sale\Fuser::getId();
     $basket = Sale\Basket::loadItemsForFUser($fuser, "s1");
+
+    // foreach ($basket as $basketItem) {
+    //   $basketItem->delete();
+    //   $basketItem->save();
+    // }
+    // $basket->save();
+
     return self::printBasket($basket);
   }
 
@@ -60,7 +70,14 @@ class BasketController
       $basket->save();
       return (["message" => "Товар успешно добавлен", "success" => true]);
     } else {
-      return ["message" => implode(',',$result->getErrorMessages()), "success" => false];
+      return ["message" => implode(',', $result->getErrorMessages()), "success" => false];
+    }
+  }
+
+  public static function findItem($productId, $basket)
+  {
+    foreach ($basket as $basketItem) {
+      if ($basketItem->getProductId() == $productId) return $basketItem;
     }
   }
 
@@ -72,18 +89,16 @@ class BasketController
     $fuser = Sale\Fuser::getId();
     $basket = Sale\Basket::loadItemsForFUser($fuser, "s1");
 
-    $basketItems = $basket->getExistsItems('catalog', $productId);
-    if (!empty($basketItems)) {
-      $basketItem = reset($basketItems);
-      if ($quantity < 1) {
-        $basketItem->delete();
-        $basket->save();
-        return;
-      }
-      $basketItem->setField('QUANTITY', $quantity);
-    }
+    $basketItem = self::findItem($productId, $basket);
 
+    if ($quantity < 1) {
+      $basketItem->delete();
+      $basket->save();
+      return "removed";
+    }
+    $basketItem->setField('QUANTITY', $quantity);
     $basket->save();
+    return "updated";
   }
 
 
@@ -117,6 +132,7 @@ class BasketController
         'PRICE' => $basketItem->getPrice(),
         'TOTAL_PRICE' => $basketItem->getFinalPrice(),
         'CURRENCY' => $basketItem->getCurrency(),
+        // 'GOGO' => $basketItem->getField('MODULE'),
         'DETAIL_PRODUCT' => $product,
       ];
     }

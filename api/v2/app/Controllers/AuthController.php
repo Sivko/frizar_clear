@@ -54,23 +54,41 @@ class AuthController
         $user_email = CustomRequestHandler::getParam($request, "email");
 
         // $user = new CUser;
-        $result = $this->user->Register(
-            $user_login,
-            $user_name,
-            $user_last_name,
-            $user_password,
-            $user_confirm_password,
-            $user_email,
-        );
-        \Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
+        // $result = $user->Register(
+        //     $user_login,
+        //     $user_name,
+        //     $user_last_name,
+        //     $user_password,
+        //     $user_confirm_password,
+        //     $user_email,
+        // );
+        $ID = $this->user->Add([
+            "EMAIL"             => $user_email,
+            "LOGIN"             => $user_login,
+            "NAME"              => $user_name,
+            "LAST_NAME"         => $user_last_name,
+            "ACTIVE"            => "Y",
+            "GROUP_ID"          => array(6, 10),
+            "PASSWORD"          => $user_password,
+            "CONFIRM_PASSWORD"  => $user_confirm_password,
+        ]);
 
-        if ($this->user->IsAuthorized()) {
+        if (intval($ID) > 0) {
+            $this->user->Authorize($ID);
             $responseMessage = ["success" => true, "message" => "Регистрация прошла успешно!"];
             return $this->customResponse->is200Response($response, $responseMessage);
         } else {
-            $responseMessage = strip_tags($result["MESSAGE"]);
+            // $responseMessage = strip_tags($result["MESSAGE"]);
+            $responseMessage = strip_tags($this->user->LAST_ERROR);
             return $this->customResponse->is400Response($response, $responseMessage);
         }
+        // if ($user->IsAuthorized()) {
+        //     $responseMessage = strip_tags($result["MESSAGE"]);
+        //     return $this->customResponse->is200Response($response, $responseMessage);
+        // } else {
+        //     $responseMessage = strip_tags($result["MESSAGE"]);
+        //     return $this->customResponse->is400Response($response, $responseMessage);
+        // }
     }
 
     public function Login(Request $request, Response $response)
