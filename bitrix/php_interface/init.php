@@ -1,4 +1,29 @@
 <?php
+
+use Bitrix\Main;
+CModule::IncludeModule('currency');
+
+if (!function_exists('getCurrency')) {
+	function getCurrency()
+	{
+		$http = new Main\Web\HttpClient();
+		$http->setRedirect(true);
+		$data = $http->get('http://www.cbr.ru/scripts/XML_daily.asp');
+		$xml = simplexml_load_string($data, "SimpleXMLElement", LIBXML_NOCDATA);
+		$json = json_encode($xml);
+		$array = json_decode($json, TRUE);
+		foreach ($array["Valute"] as $key => $item) {
+			if ($item["CharCode"] == "EUR" || $item["CharCode"] == "CNY") {
+				$value = str_replace(",", ".", $item["Value"]);
+				$arFields = array("RATE" => $value, "RATE_CNT" => 1, "CURRENCY" => $item["CharCode"], "DATE_RATE" => date("d.m.Y"));
+				print_r($item) . "<br/>";
+				CCurrencyRates::Add($arFields);
+			}
+		}
+	}
+}
+
+
 function custom_mail($to, $subject, $message, $additionalHeaders = '')
 {
   require_once $_SERVER["DOCUMENT_ROOT"] . '/api/v2/vendor/phpmailer/phpmailer/src/PHPMailer.php';

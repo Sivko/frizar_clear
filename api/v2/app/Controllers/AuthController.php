@@ -54,39 +54,23 @@ class AuthController
         $user_email = CustomRequestHandler::getParam($request, "email");
 
         // $user = new CUser;
-        // $result = $user->Register(
-        //     $user_login,
-        //     $user_name,
-        //     $user_last_name,
-        //     $user_password,
-        //     $user_confirm_password,
-        //     $user_email,
-        // );
-        $ID = $this->user->Add([
-            "EMAIL"             => $user_email,
-            "LOGIN"             => $user_login,
-            "ACTIVE"            => "Y",
-            "GROUP_ID"          => array(6, 10),
-            "PASSWORD"          => $user_password,
-            "CONFIRM_PASSWORD"  => $user_confirm_password,
-        ]);
+        $result = $this->user->Register(
+            $user_login,
+            $user_name,
+            $user_last_name,
+            $user_password,
+            $user_confirm_password,
+            $user_email,
+        );
+        \Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
 
-        if (intval($ID) > 0) {
-            $this->user->Authorize($ID);
+        if ($this->user->IsAuthorized()) {
             $responseMessage = ["success" => true, "message" => "Регистрация прошла успешно!"];
             return $this->customResponse->is200Response($response, $responseMessage);
         } else {
-            // $responseMessage = strip_tags($result["MESSAGE"]);
-            $responseMessage = strip_tags($this->user->LAST_ERROR);
+            $responseMessage = strip_tags($result["MESSAGE"]);
             return $this->customResponse->is400Response($response, $responseMessage);
         }
-        // if ($user->IsAuthorized()) {
-        //     $responseMessage = strip_tags($result["MESSAGE"]);
-        //     return $this->customResponse->is200Response($response, $responseMessage);
-        // } else {
-        //     $responseMessage = strip_tags($result["MESSAGE"]);
-        //     return $this->customResponse->is400Response($response, $responseMessage);
-        // }
     }
 
     public function Login(Request $request, Response $response)
