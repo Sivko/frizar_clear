@@ -11,8 +11,8 @@ excludes=(
   /.vscode
 )
 
-Path_From=./
-Path_To=root@85.193.83.186:/root/frizar_backend
+Path_From=root@85.193.83.186:/root/frizar_backend
+Path_To=./
 
 exclude_str="rsync -avz -e 'ssh -i ~/.ssh/id_rsa' $Path_From $Path_To"
 
