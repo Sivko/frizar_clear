@@ -43,29 +43,18 @@ class CatalogController
   public static function getNotNullProperties($id, $limit = false, $filter = [])
   {
     $resp = new CustomResponse();
-
-    if ($id) {
-
-
-      $items = CIBlockElement::GetProperty($_ENV["ID_IBLOCK_PRODUCT"], $id, 'sort', 'asc', $filter);
-      $properties = [];
-      while ($item = $items->Fetch()) {
-        if ($item["VALUE"] && $item["NAME"] != "Наименование для поиска") {
-          if ($item["DESCRIPTION"]) {
-            if ($item["NAME"] == "Базовая единица") {
-              $properties[] = ["NAME" => $item['NAME'], "VALUE" => $item['VALUE']];
-            } else {
-              $properties[] = ["NAME" => $item['DESCRIPTION'], "VALUE" => $item['VALUE']];
-            }
-          } else {
-            $properties[] = ["NAME" => $item['NAME'], "VALUE" => $item['VALUE']];
-          }
-        }
+    $items = CIBlockElement::GetProperty($_ENV["ID_IBLOCK_PRODUCT"], $id, 'sort', 'asc', $filter);
+    $properties = [];
+    while ($item = $items->Fetch()) {
+      if ($item["NAME"] == "Производитель") {
+        $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
+        continue;
       }
-      return $limit ? array_slice($properties, 0, $limit) : $properties;
-    } else {
-      return [];
+      if ($item["VALUE"])
+        $properties[] = ["NAME" => $item["NAME"] ?? $item["DESCRIPTION"], "VALUE" => $item["VALUE"]];
+      $properties[] = $item;
     }
+    return $limit ? array_slice($properties, 0, $limit) : $properties;
   }
 
 

@@ -23,7 +23,7 @@ class OrderController
 
   protected $customResponse;
 
-  public static function getOrdersByUserId($request,  $response)
+  public static function getOrdersByUser($request,  $response)
   {
 
     $orderBy = $request->getQueryParams()['orderBy'] ?? $_ENV["ORDER_BY_DEFAULT"];
@@ -34,8 +34,9 @@ class OrderController
     $resp = new CustomResponse();
 
     // Получаем список заказов пользователя через ORM
-    $userId = CustomRequestHandler::getParam($request, "userId");
-
+    // $userId = CustomRequestHandler::getParam($request, "userId");
+    $user = new CUser();
+    $userId = $user->GetID();
 
     $total_items = Order::getList([
       'filter' => ['USER_ID' => $userId],
@@ -102,6 +103,28 @@ class OrderController
         "items" => $page > $total_pages ? [] : $items,
       ]
     );
+  }
+
+  public static function getOrderById($request,  $response)
+  {
+    $resp = new CustomResponse();
+
+    $orderId = $request->getQueryParams()['id'];
+    $user = new CUser();
+    // $userId = $resp->is200Response($response, $user->GetID());
+
+    // $_item = Order::getList([
+    //   'filter' => ['USER_ID' => $userId, 'ID' => $orderId],
+    //   'select' => ['ID'],
+    // ]);
+    $_item = Order::getList([
+      'filter' => ['ID' => $orderId],
+      'select' => ['*'],
+    ]);
+
+    if ($item = $_item->fetch()) {
+      return $resp->is200Response($response, $item);
+    } else return $resp->is400Response($response, "ничего не найдено");
   }
 
   public function updateOrder(Request $request, Response $response)
