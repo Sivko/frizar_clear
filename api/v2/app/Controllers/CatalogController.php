@@ -40,18 +40,23 @@ class CatalogController
     // }, $elements);
   }
 
-  public static function getNotNullProperties($id, $limit = false, $filter = [])
+  public static function getNotNullProperties($id, $limit = false, $iblockId = false, $filter = [])
   {
     $resp = new CustomResponse();
-    $items = CIBlockElement::GetProperty($_ENV["ID_IBLOCK_PRODUCT"], $id, 'sort', 'asc', $filter);
+    $items = CIBlockElement::GetProperty($iblockId ?? $_ENV["ID_IBLOCK_PRODUCT"], $id, 'sort', 'asc', $filter);
     $properties = [];
     while ($item = $items->Fetch()) {
-      if ($item["NAME"] == "Производитель") {
-        $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
-        continue;
+      if ($item["NAME"] == "PDF" && $item["VALUE"]) {
+        $properties[] = ["NAME" => "PDF", "VALUE" => CFile::GetPath($item["VALUE"])];
+        // $item["VALUE_PDF"] = ;
+        // continue;
       }
-      if ($item["VALUE"])
-        $properties[] = ["NAME" => $item["NAME"] ?? $item["DESCRIPTION"], "VALUE" => $item["VALUE"]];
+      // if ($item["NAME"] == "Производитель") {
+      //   $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
+      //   continue;
+      // }
+      // if ($item["VALUE"])
+      //   $properties[] = ["NAME" => $item["NAME"] ?? $item["DESCRIPTION"], "VALUE" => $item["VALUE"]];
       $properties[] = $item;
     }
     return $limit ? array_slice($properties, 0, $limit) : $properties;
@@ -353,7 +358,7 @@ class CatalogController
       $items[] = [
         ...$item,
         "storage" => $tositemap ?  "" : CCatalogProduct::GetByID($item["ID"]),
-        "properties" => $tositemap ?  "" : CatalogController::getNotNullProperties($item["ID"], 10),
+        "properties" => $tositemap ?  "" : CatalogController::getNotNullProperties($item["ID"], 10, $filter["ID"]),
         "image" => $item["PREVIEW_PICTURE"] ? CFile::GetPath($item["PREVIEW_PICTURE"]) : CFile::GetPath($item["DETAIL_PICTURE"]),
         "images" => $tositemap ?  "" : self::getImages($item["PROPERTY_MORE_PHOTO_VALUE"]),
         // "price" => $tositemap ?  "" : $item["PROPERTY_MINIMUM_PRICE_VALUE"],
