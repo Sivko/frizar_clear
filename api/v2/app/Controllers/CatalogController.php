@@ -46,17 +46,21 @@ class CatalogController
     $items = CIBlockElement::GetProperty($iblockId ?? $_ENV["ID_IBLOCK_PRODUCT"], $id, 'sort', 'asc', $filter);
     $properties = [];
     while ($item = $items->Fetch()) {
-      if ($item["NAME"] == "PDF" && $item["VALUE"]) {
+      if ($item["NAME"] == "PDF") {
         $properties[] = ["NAME" => "PDF", "VALUE" => CFile::GetPath($item["VALUE"])];
         // $item["VALUE_PDF"] = ;
         // continue;
       }
-      // if ($item["NAME"] == "Производитель") {
-      //   $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
-      //   continue;
-      // }
-      // if ($item["VALUE"])
-      //   $properties[] = ["NAME" => $item["NAME"] ?? $item["DESCRIPTION"], "VALUE" => $item["VALUE"]];
+      if ($item["NAME"] == "Бренд") {
+        $properties[] = ["NAME" => "Бренд", "VALUE" => $item["VALUE_ENUM"]];
+        // continue;
+      }
+      if ($item["NAME"] == "Производитель") {
+        $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
+        // continue;
+      }
+      if ($item["VALUE"])
+        $properties[] = ["NAME" => $item["NAME"] ?? $item["DESCRIPTION"], "VALUE" => $item["VALUE"]];
       $properties[] = $item;
     }
     return $limit ? array_slice($properties, 0, $limit) : $properties;
@@ -426,7 +430,7 @@ class CatalogController
     $section = [
       ...$section,
       "storage" => CCatalogProduct::GetByID($section["ID"]),
-      "properties" => CatalogController::getNotNullProperties($section["ID"]),
+      "properties" => CatalogController::getNotNullProperties($section["ID"], false, $section['IBLOCK_ID']),
       "image" => CFile::GetPath($section["DETAIL_PICTURE"]),
       "images" => self::getImages($section["PROPERTY_MORE_PHOTO_VALUE"]),
       // "price" => \Bitrix\Catalog\PriceTable::getList(["select" => ["*"], "filter" => ["PRODUCT_ID" => $section["ID"], "CURRENCY" => "RUB"]])->fetch(),

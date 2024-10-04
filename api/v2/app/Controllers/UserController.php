@@ -17,6 +17,8 @@ use App\Requests\CustomRequestHandler;
 use App\Response\CustomResponse;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Bitrix\Sale;
+
 class UserController
 {
   protected $BXUser;
@@ -33,6 +35,18 @@ class UserController
     // if (!is_object($USER)) 
     $this->BXUser = new CUser;
     $this->customResponse = new CustomResponse();
+  }
+
+  public function getUser(Request $request, Response $response)
+  {
+    $result = [
+      "id" => $this->BXUser->GetID(),
+      "name" => $this->BXUser->GetFirstName(),
+      "lastName" => $this->BXUser->GetLastName(),
+      "email" => $this->BXUser->GetEmail(),
+      "login" => $this->BXUser->GetLogin()
+    ];
+    return $this->customResponse->is200Response($response, $result);
   }
 
   public function getIdByEmail($email = "")
@@ -64,7 +78,8 @@ class UserController
   }
 
 
-  public function getUserByToken($token){
+  public function getUserByToken($token)
+  {
     $res = CUser::GetList(['ID' => 'DESC'], [], ["UF_JWT_TOKEN" => $token ?? $this->email], ["NAV_PARAMS" => ['nTopCount' => 1, 'nOffset' => 1], "FIELDS" => ["ID"]], ['ID']);
     $id =  $res->fetch()["ID"];
     $this->id = $id;
@@ -81,7 +96,8 @@ class UserController
     // $this->BXUser->Update($userId, ["UF_JWT_TOKEN" => $token], false);
   }
 
-  public function updateUser(Request $request, Response $response) {
+  public function updateUser(Request $request, Response $response)
+  {
     $userId = CustomRequestHandler::getParam($request, "userId");
     $fields = CustomRequestHandler::getParam($request, "fields");
     $user = new CUser();

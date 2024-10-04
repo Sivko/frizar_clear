@@ -12,7 +12,13 @@ use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Respect\Validation\Validator as v;
 use CUser;
+use CIBlockPropertyEnum;
+use CIBlockElement;
+use CCatalogProduct;
 use CFile;
+use CIBlockSection;
+
+use Bitrix\Iblock\InheritedProperty\SectionValues; //для раздела ($iblockId,$sectionId); 
 
 
 \Bitrix\Main\Loader::includeModule("sale");
@@ -23,49 +29,32 @@ class BrandsController
 
   public function __construct() {}
 
-  public static function getBrands($request)
+  public static function getAnyBrands($request, $response)
   {
-    $orderBy = $request->getQueryParams()['orderBy'] ?? $_ENV["ORDER_BY_DEFAULT"];
-    $offset = ((int)($request->getQueryParams()['offset'] ?? $_ENV["OFFSET_DEFAULT"]));
-    $offset = $offset < 50 ? $offset : $_ENV["OFFSET_DEFAULT"];
-    $order = $request->getQueryParams()['order'] ?? $_ENV["ORDER_DEFAULT"];
-    $page = $request->getQueryParams()['page'] ?? 1;
-    $q = $request->getQueryParams()['q'];
+    $resp = new CustomResponse();
 
-    $_items = \CIBlockElement::GetList(
-      [$orderBy => $order],
-      ['IBLOCK_ID' => $_ENV["ID_IBLOCK_BRANDS"], 'ACTIVE' => 'Y', 'NAME' => "%" . $q . "%"],
-      false,
-      ['nPageSize' => $offset, 'iNumPage' => $page],
-      ["*"]
-    );
-    $items = [];
+    $IBLOCK_ID = $request->getQueryParams()['IBLOCK_ID'];
+    $PROPERTY_ID = $request->getQueryParams()['PROPERTY_ID'];
 
-    $total_items = (int)$_items->SelectedRowsCount();
+    $_items = CIBlockElement::GetList([], ["IBLOCK_ID"=>$IBLOCK_ID, "ACTIVE" => "Y"], false, [], ["NAME"]);
 
-    $total_pages = round($total_items / $offset);
-    $total_pages = $total_pages == 0 ? 1 : $total_pages;
+    while ($item = $_items->GetNext()) {
+      $brandNames[] = $item["NAME"];
+      $items[] = $item;
+    };
 
-    while ($item = $_items->fetch()) {
-      $items[] = [
-        ...$item,
-        "link" => "/company/brands/" . $item["CODE"] . "/",
-        "image"=> CFile::GetPath($item["PREVIEW_PICTURE"])
-      ];
+    //add Any brands
+    $data = CIBlockPropertyEnum::GetList(["SORT" => "ASC", "VALUE" => "ASC"], ["PROPERTY_ID" => $PROPERTY_ID]);
+    while ($item = $data->GetNext()) {
+      if (!in_array($item["VALUE"], $brandNames)) {
+        $result[] = [
+          "NAME" => $item["VALUE"],
+          "link" => "/company/brands/" . urlencode($item["VALUE"])
+        ];
+      }
     }
 
-    return [
-      "meta" => [
-        "meta_title" => "Brands",
-        "meta_description" => "Brands",
-      ],
-      'pagination' => [
-        'current_page' => $page,
-        'total_pages' => $total_pages,
-        'total_items' => $total_items,
-        'offset' => $offset,
-      ],
-      "brands" => $page > $total_pages ? [] : $items,
-    ];
+
+    return $resp->is200Response($response, $result);
   }
 }

@@ -13,7 +13,7 @@ class MenuController
   public static function generateFullSlugs(&$node, $parentSlug = '')
   {
     // Формируем новый slug для текущего узла
-    $node['fullslug'] = trim($parentSlug . '/' . $node['slug'], '/');
+    $node['fullslug'] = '/catalog/' . trim(str_replace('/catalog/', '', $parentSlug) . '/' . $node['slug'], '/');
 
     // Если у узла есть дочерние элементы, рекурсивно вызываем функцию для них
     if (!empty($node['childs'])) {
@@ -27,7 +27,7 @@ class MenuController
   public static function get($request)
   {
     $productId = $request->getQueryParams()['productId'];
-    
+
     $filter = [
       'IBLOCK_ID' => $productId,
       'ACTIVE' => 'Y',
@@ -50,6 +50,7 @@ class MenuController
         'id' => $item['ID'],
         'name' => $item['NAME'],
         'slug' => $item['CODE'],
+        'fullslug' => '/catalog' . '/' . $item['CODE'],
         'level' => (int)$item['DEPTH_LEVEL'],
         'childs' => null,
         'parentId' => $item['IBLOCK_SECTION_ID']

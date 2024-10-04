@@ -90,10 +90,14 @@ return function (App $app) {
     });
 
 
-    $app->get("/brands", function ($request, Response $response) {
+    // $app->get("/brands", function ($request, Response $response) {
+    //     $resp = new CustomResponse();
+    //     return $responseMessage = BrandsController::getBrands($request, $response);
+    // });
+    $app->get("/anybrands", function ($request, Response $response) {
         $resp = new CustomResponse();
-        $responseMessage = BrandsController::getBrands($request);
-        return $resp->is200Response($response, $responseMessage);
+        return $responseMessage = BrandsController::getAnyBrands($request, $response);
+        // return $resp->is200Response($response, $responseMessage);
     });
 
     $app->get("/sertifications", function ($request, Response $response) {
@@ -160,6 +164,7 @@ return function (App $app) {
 
 
     $app->group("/user", function ($app) {
+        $app->get("", [\App\Controllers\UserController::class, "getUser"]);
         $app->post("/update", [\App\Controllers\UserController::class, "updateUser"]);
     });
 

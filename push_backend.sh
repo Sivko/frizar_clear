@@ -1,4 +1,4 @@
-excludes=(
+excludes=(  .DS_Store
   .DS_Store
   /bitrix/.settings.php
   bitrix/backup
@@ -11,8 +11,8 @@ excludes=(
   /upload
 )
 
-Path_From=./api/
-Path_To=root@31.128.46.89:/root/backend/api
+Path_From=./
+Path_To=root@31.128.46.89:/root/backend/
 
 exclude_str="rsync -avz -e 'ssh -i ~/.ssh/id_rsa' $Path_From $Path_To"
 
