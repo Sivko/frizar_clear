@@ -5,6 +5,7 @@
 !docker-compose.yml
 !custom-php.ini
 !.htaccess
+.DS_Store
 
 !bitrix
 bitrix/*
