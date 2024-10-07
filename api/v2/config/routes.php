@@ -11,6 +11,7 @@ use App\Controllers\CatalogController;
 use App\Controllers\OrderController;
 use App\Controllers\UserController;
 use App\Controllers\ArticleController;
+use App\Controllers\BatchController;
 use App\Controllers\BrandsController;
 use App\Controllers\MenuController;
 use App\Controllers\SertificationController;
@@ -130,6 +131,14 @@ return function (App $app) {
         });
     });
 
+    $app->group("/bath", function ($app) {
+        $app->post("/products", function ($request, Response $response) {
+            $resp = new CustomResponse();
+            $responseMessage = BatchController::updateProduct($request);
+            return $resp->is200Response($response, $responseMessage);
+        });
+    });
+
     $app->group("/basket", function ($app) {
         $app->get("/", function ($request, Response $response) {
             $resp = new CustomResponse();
@@ -154,7 +163,7 @@ return function (App $app) {
     });
 
     $app->group("/auth", function ($app) {
-        $app->post("/check",[\App\Controllers\AuthController::class, "CheckAuth"]);
+        $app->post("/check", [\App\Controllers\AuthController::class, "CheckAuth"]);
         $app->post("/login", [\App\Controllers\AuthController::class, "Login"]);
         $app->post("/logout", [\App\Controllers\AuthController::class, "Logout"]);
         $app->post("/register", [\App\Controllers\AuthController::class, "Register"]);
@@ -174,5 +183,4 @@ return function (App $app) {
         $app->get("", [\App\Controllers\OrderController::class, "getOrdersByUser"]);
         $app->get("/item", [\App\Controllers\OrderController::class, "getOrderById"]);
     });
-    
 };
