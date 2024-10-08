@@ -472,19 +472,16 @@ class CatalogController
           "meta_title" => $meta["SECTION_META_TITLE"] ? $meta["SECTION_META_TITLE"] : $section["NAME"],
           "meta_description" => $meta["SECTION_META_DESCRIPTION"] ?? "",
         ],
+        "section" => $section,
+        // 'breadcrumbs' => self::getBreadcrumb($section["IBLOCK_SECTION_ID"]),
+        'breadcrumbs' => self::getBreadcrumb($section["IBLOCK_SECTION_ID"]),
         'pagination' => [
           'current_page' => $page,
           'total_pages' => $total_pages,
           'total_items' => $total_items,
           'offset' => $offset,
         ],
-
         "items" => $page > $total_pages ? [] : $items,
-
-        "section" => $section,
-        // 'breadcrumbs' => self::getBreadcrumb($section["IBLOCK_SECTION_ID"]),
-        'breadcrumbs' => self::getBreadcrumb($section["IBLOCK_SECTION_ID"]),
-
       ]
     );
   }

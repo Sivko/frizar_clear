@@ -46,12 +46,12 @@ class BrandsController
     //add Any brands
     $data = CIBlockPropertyEnum::GetList(["SORT" => "ASC", "VALUE" => "ASC"], ["PROPERTY_ID" => $PROPERTY_ID]);
     while ($item = $data->GetNext()) {
-      // if (!in_array($item["VALUE"], $brandNames)) {
+      if (!in_array($item["VALUE"], $brandNames)) {
         $result[] = [
           "NAME" => $item["VALUE"],
           "link" => "/company/brands/" . urlencode($item["VALUE"])
         ];
-      // }
+      }
     }
 
 
