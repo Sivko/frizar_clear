@@ -10,6 +10,24 @@ header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Or
 header('Access-Control-Allow-Methods: GET, POST');
 \Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
 
+
+
+// Функция для создания siteMap (должно запускаться каждый день через агент-контроллер, или по триггеру, например от ТГ бота)
+if (!function_exists('createSiteMap')) {
+  function createSiteMap()
+  {
+    $dom = new DOMDocument('1.0', 'utf-8');
+    $strXML = '<?xml version="1.0" encoding="utf-8"?><root><item>Первый</item><item>Второй</item></root>';
+    $dom->loadXML($strXML);
+    $xml = $dom->saveXML();
+    echo htmlspecialchars($xml);
+    $dom->save(dirname(dirname(__DIR__)).'/doc.xml');
+    // echo ;
+  }
+}
+
+
+// Функция для обновления курса валюты (должно запускаться каждый день через агент-контроллер)
 if (!function_exists('getCurrency')) {
   function getCurrency()
   {
@@ -31,6 +49,8 @@ if (!function_exists('getCurrency')) {
 }
 
 
+
+// Переназначает дефолтного отправителя в из bitrix 
 function custom_mail($to, $subject, $message, $additionalHeaders = '')
 {
   require_once $_SERVER["DOCUMENT_ROOT"] . '/api/v2/vendor/phpmailer/phpmailer/src/PHPMailer.php';

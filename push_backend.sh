@@ -6,6 +6,7 @@ excludes=(  .DS_Store
   bitrix/catalog_export
   .git/
   /bitrix/managed_cache
+  /bitrix/stack_cache
   /bitrix/php_inteface/dbconn.php
   /.vscode
   /upload

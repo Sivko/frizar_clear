@@ -11,30 +11,32 @@ use Bitrix\CSaleBasket;
 use Bitrix\Main\Loader;
 use Bitrix\Catalog;
 use Bitrix\Sale\Basket;
+// use InheritedProperty\ElementTemplates;
+use Bitrix\Iblock\InheritedProperty;
+
 
 \Bitrix\Main\Loader::includeModule("sale");
 \Bitrix\Main\Loader::includeModule("catalog");
 
-class BatchController {
-  static function updateProduct($request){
+class BatchController
+{
+  static function updateProduct($request)
+  {
 
-    // $productId = CustomRequestHandler::getParam($request, "productId");
-    // $quantity = CustomRequestHandler::getParam($request, "quantity");
+    $id = CustomRequestHandler::getParam($request, "id");
+    $metaTitle = CustomRequestHandler::getParam($request, "metaTitle");
+    $metaDescription = CustomRequestHandler::getParam($request, "metaDescription");
+    $h1 = CustomRequestHandler::getParam($request, "h1");
 
-    // $fuser = Sale\Fuser::getId();
-    // $basket = Sale\Basket::loadItemsForFUser($fuser, "s1");
+    // return "updated".$id.$metaTitle;
+    $ipropTemplates = new InheritedProperty\ElementTemplates($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $id);
+    //Установить шаблон для элемента
+    $ipropTemplates->set(array(
+      "ELEMENT_META_TITLE" => $metaTitle,
+      "ELEMENT_META_DESCRIPTION" => $metaDescription
+    ));
 
-    // $basketItem = self::findItem($productId, $basket);
-
-    // if ($quantity < 1) {
-    //   $basketItem->delete();
-    //   $basket->save();
-    //   return "removed";
-    // }
-    // $basketItem->setField('QUANTITY', $quantity);
-    // $basket->save();
-    return "updated";
-
+    return "updated?";
   }
 }
 // [
