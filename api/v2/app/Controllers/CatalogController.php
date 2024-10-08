@@ -43,7 +43,7 @@ class CatalogController
   public static function getNotNullProperties($id, $limit = false, $iblockId = false, $filter = [])
   {
     $resp = new CustomResponse();
-    $items = CIBlockElement::GetProperty($iblockId ?? $_ENV["ID_IBLOCK_PRODUCT"], $id, 'sort', 'asc', $filter);
+    $items = CIBlockElement::GetProperty($iblockId ?? $_ENV["NEXT_PUBLIC_ID_PRODUCT"], $id, 'sort', 'asc', $filter);
     $properties = [];
     while ($item = $items->Fetch()) {
       if ($item["NAME"] == "PDF") {
@@ -91,7 +91,7 @@ class CatalogController
   {
     $product = \CIBlockElement::GetList(
       [],
-      ['IBLOCK_ID' => $_ENV["ID_IBLOCK_PRODUCT"], 'ACTIVE' => 'Y', ...$filter],
+      ['IBLOCK_ID' => $_ENV["NEXT_PUBLIC_ID_PRODUCT"], 'ACTIVE' => 'Y', ...$filter],
       false,
       [],
       ["*", ...explode(",", $_ENV["PRODUCT_POPERTY_FIELDS"])]
@@ -101,10 +101,10 @@ class CatalogController
 
     if (!$item) return null;
 
-    $meta = new ElementValues($_ENV["ID_IBLOCK_PRODUCT"], $item["ID"]);
+    $meta = new ElementValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $item["ID"]);
     $meta = $meta->getValues();
 
-    $propertyValue = CIBlockElement::GetProperty($_ENV["ID_IBLOCK_PRODUCT"], $item["ID"], array(), array());
+    $propertyValue = CIBlockElement::GetProperty($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $item["ID"], array(), array());
     while ($value = $propertyValue->fetch()) {
       $properties[] = $value;
     }
@@ -142,14 +142,14 @@ class CatalogController
     $offset = ((int)($request->getQueryParams()['offset'] ?? $_ENV["OFFSET_DEFAULT"]));
     $offset = $offset < 50 ? $offset : $_ENV["OFFSET_DEFAULT"];
 
-    $catalog = CIBlockSection::GetList([], ['IBLOCK_ID' => $_ENV["ID_IBLOCK_PRODUCT"], 'CODE' => $slug], false, ['*'])->Fetch();
+    $catalog = CIBlockSection::GetList([], ['IBLOCK_ID' => $_ENV["NEXT_PUBLIC_ID_PRODUCT"], 'CODE' => $slug], false, ['*'])->Fetch();
     $catalog_id = $catalog["ID"];
 
 
     $productItems = \CIBlockElement::GetList(
       [$orderBy => $order],
       [
-        'IBLOCK_ID' => $_ENV["ID_IBLOCK_PRODUCT"],
+        'IBLOCK_ID' => $_ENV["NEXT_PUBLIC_ID_PRODUCT"],
         'ACTIVE' => 'Y',
         // 'IBLOCK_SECTION_ID' => $catalog_id,
         'SECTION_ID' => $catalog_id,
@@ -168,7 +168,7 @@ class CatalogController
 
     while ($item = $productItems->fetch()) {
 
-      $propertyValue = CIBlockElement::GetProperty($_ENV["ID_IBLOCK_PRODUCT"], $item["ID"], array(), array());
+      $propertyValue = CIBlockElement::GetProperty($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $item["ID"], array(), array());
       while ($value = $propertyValue->fetch()) {
         $properties[] = $value;
       }
@@ -184,7 +184,7 @@ class CatalogController
       ];
     }
 
-    $meta = new SectionValues($_ENV["ID_IBLOCK_PRODUCT"], $catalog_id);
+    $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $catalog_id);
     $meta = $meta->getValues();
 
     return [
@@ -235,7 +235,7 @@ class CatalogController
 
     $productItems = \CIBlockElement::GetList(
       [$orderBy => $order],
-      ['IBLOCK_ID' => $_ENV["ID_IBLOCK_PRODUCT"], 'ACTIVE' => 'Y', 'NAME' => "%" . $q . "%"],
+      ['IBLOCK_ID' => $_ENV["NEXT_PUBLIC_ID_PRODUCT"], 'ACTIVE' => 'Y', 'NAME' => "%" . $q . "%"],
       false,
       ['nPageSize' => $offset, 'iNumPage' => $page],
       // ["*", "DETAIL_PICTURE", "PROPERTY_MORE_PHOTO", "PROPERTY_MINIMUM_PRICE"]
@@ -250,7 +250,7 @@ class CatalogController
 
     while ($item = $productItems->fetch()) {
 
-      $propertyValue = CIBlockElement::GetProperty($_ENV["ID_IBLOCK_PRODUCT"], $item["ID"], array(), array());
+      $propertyValue = CIBlockElement::GetProperty($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $item["ID"], array(), array());
       while ($value = $propertyValue->fetch()) {
         $properties[] = $value;
       }
@@ -309,7 +309,7 @@ class CatalogController
 
   public static function createLinkByRules($rules, $code, $isi = "", $ibclock_id = false)
   {
-    if ($ibclock_id == $_ENV['ID_IBLOCK_PRODUCT']) {
+    if ($ibclock_id == $_ENV['NEXT_PUBLIC_ID_PRODUCT']) {
       return "/product/" . $code;
     }
     if (!$rules) {
@@ -372,7 +372,7 @@ class CatalogController
       ];
     }
 
-    $meta = new SectionValues($_ENV["ID_IBLOCK_PRODUCT"], $section["ID"]);
+    $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $section["ID"]);
     $meta = $meta->getValues();
     $total_items = (int)$_items->SelectedRowsCount();
     $total_pages = (int)(ceil($total_items / $offset) ?? 1);
@@ -459,7 +459,7 @@ class CatalogController
       ];
     }
 
-    $meta = new SectionValues($_ENV["ID_IBLOCK_PRODUCT"], $section["ID"]);
+    $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $section["ID"]);
     $meta = $meta->getValues();
     $total_items = (int)$_items->SelectedRowsCount();
     $total_pages = (int)(ceil($total_items / $offset) ?? 1);
