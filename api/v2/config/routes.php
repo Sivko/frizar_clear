@@ -32,7 +32,7 @@ return function (App $app) {
         $response = $response
             ->withHeader('Access-Control-Allow-Credentials', 'true')
             // ->withHeader('Access-Control-Allow-Origin', '*')
-            // ->withHeader('Access-Control-Allow-Origin', 'http://vs113.ru')
+            // ->withHeader('Access-Control-Allow-Origin', 'https://vs113.ru')
             ->withHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -60,9 +60,10 @@ return function (App $app) {
         $app->get("/element", function ($request, Response $response) {
             return CatalogController::getElementByFilter($request, $response);
         });
-        // $app->get("/test-element", function ($request, Response $response) {
-        //     return CatalogController::getNotNullProperties($request, $response);
-        // });
+        $app->get("/test", function ($request, Response $response) {
+            $resp = new CustomResponse();
+            return $resp->is200Response($response, CatalogController::getFirstProductByFilter(["ID" => "1890"]));
+        });
     });
     // $app->get("/sections", function ($request, $response) {
     //     return CatalogController::getItemsByFilter($request, $response);

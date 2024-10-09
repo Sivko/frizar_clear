@@ -130,7 +130,7 @@ class CatalogController
   {
     $product = \CIBlockElement::GetList(
       [],
-      ['IBLOCK_ID' => $_ENV["NEXT_PUBLIC_ID_PRODUCT"], 'ACTIVE' => 'Y', ...$filter],
+      ['ACTIVE' => 'Y', ...$filter],
       false,
       [],
       ["*", ...explode(",", $_ENV["PRODUCT_POPERTY_FIELDS"])]
