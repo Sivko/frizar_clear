@@ -42,13 +42,8 @@ return function (App $app) {
 
     $app->get('/', function ($request, Response $response) {
         $resp = new CustomResponse();
-        // CatalogController::getBreadcrumb();
-        // $getNavChain = CIBlockSection::GetNavChain(false, 435, ["CODE", "NAME"]);
-        // while ($item = $getNavChain->fetch()) {
-        //     $result[] = [...$item];
-        //   }
-        // return $resp->is200Response($response, $result);
-        return $resp->is200Response($response, "ok");
+        $result = CatalogController::getTest($request);
+        return $resp->is200Response($response, $result);
     });
 
     $app->get("/catalog", function ($request, $response) {

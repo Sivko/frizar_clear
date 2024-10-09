@@ -26,6 +26,17 @@ use CIBlock;
 class CatalogController
 {
 
+  public static function getTest($request){
+    $filter = $request->getQueryParams()['filter'];
+    $items = CIBlockSection::GetList([], [...$filter]);
+    // $items = CIBlockSection::GetList([], [...$filter, "!IBLOCK_CODE"=>'documentaciya']);
+    // $items = CIBlockSection::GetList([], [...$filter, "IBLOCK_TYPE_ID" => "catalog"]);
+    while ($item = $items->GetNext()){
+      $result[] = $item;
+    }
+    return $result;
+  }
+
   public static function getImages($elements)
   {
     return [
@@ -49,19 +60,47 @@ class CatalogController
       if ($item["NAME"] == "PDF") {
         $properties[] = ["NAME" => "PDF", "VALUE" => CFile::GetPath($item["VALUE"])];
         // $item["VALUE_PDF"] = ;
-        // continue;
+        continue;
       }
       if ($item["NAME"] == "Бренд") {
-        $properties[] = ["NAME" => "Бренд", "VALUE" => $item["VALUE_ENUM"]];
-        // continue;
+        if ($item["VALUE_ENUM"])
+          $properties[] = ["NAME" => "Бренд", "VALUE" => $item["VALUE_ENUM"]];
+        continue;
       }
       if ($item["NAME"] == "Производитель") {
-        $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
-        // continue;
+        if ($item["VALUE_ENUM"])
+          $properties[] = ["NAME" => "Производитель", "VALUE" => $item["VALUE_ENUM"]];
+        continue;
+      }
+      if ($item["NAME"] == "Наименование для поиска") {
+        continue;
+      }
+      if ($item["NAME"] == "Реквизиты") {
+        continue;
+      }
+      if ($item["NAME"] == "Картинки галереи") {
+        continue;
+      }
+      if ($item["NAME"] == "Страна производства") {
+        if ($item["VALUE_ENUM"])
+          $properties[] = ["NAME" => "Страна производства", "VALUE" => $item["VALUE_ENUM"]];
+        continue;
+      }
+      if ($item["NAME"] == "Выгружать описание на сайт") {
+        continue;
+      }
+      if ($item["NAME"] == "Новинка") {
+        continue;
+      }
+      if ($item["NAME"] == "Популярное") {
+        continue;
+      }
+      if ($item["NAME"] == "Снят с производства") {
+        continue;
       }
       if ($item["VALUE"])
         $properties[] = ["NAME" => $item["NAME"] ?? $item["DESCRIPTION"], "VALUE" => $item["VALUE"]];
-      $properties[] = $item;
+      // $properties[] = $item;
     }
     return $limit ? array_slice($properties, 0, $limit) : $properties;
   }
@@ -352,7 +391,7 @@ class CatalogController
 
     if (!$filter) return $resp->is400Response($response, ["error" => "not params"]);
 
-    $section = $isinfo ?  \CIBlock::GetList([], [...$filter])->Fetch() : CIBlockSection::GetList([], [...$filter])->GetNext();
+    $section = $isinfo ?  \CIBlock::GetList([], [...$filter])->Fetch() : CIBlockSection::GetList([], [...$filter, "IBLOCK_TYPE_ID" => "catalog"])->GetNext();
     $elements_filter = $isinfo ? ["ACTIVE" => "Y", "IBLOCK_ID" => $section["ID"], ...$el_filter] : ["ACTIVE" => "Y", "SECTION_ID" => $section["ID"], ...$el_filter];
 
 

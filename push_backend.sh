@@ -1,4 +1,4 @@
-excludes=(  .DS_Store
+excludes=(
   .DS_Store
   /bitrix/.settings.php
   bitrix/backup
@@ -10,6 +10,7 @@ excludes=(  .DS_Store
   /bitrix/php_inteface/dbconn.php
   /.vscode
   /upload
+  bitrix/tmp
 )
 
 Path_From=./

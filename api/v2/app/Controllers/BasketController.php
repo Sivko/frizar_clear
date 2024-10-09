@@ -147,8 +147,10 @@ class BasketController
       $basket = $order->getBasket();
       $basketArray = [];
       foreach ($basket as $basketItem) {
+        $props = \CIBlockElement::GetList([], ["ID" => $basketItem->getProductId()], false, [], ["NAME", "CODE"])->Fetch();
         $basketArray[] = [
           'PRODUCT_ID' => $basketItem->getProductId(),
+          'property' => $props,
           'QUANTITY' => $basketItem->getQuantity(),
           'PRICE' => $basketItem->getPrice(),
           'TOTAL_PRICE' => $basketItem->getFinalPrice(),

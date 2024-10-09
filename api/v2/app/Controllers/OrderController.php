@@ -12,10 +12,14 @@ use App\Controllers\BasketController;
 use App\Controllers\CatalogController;
 use Bitrix\Sale\Order;
 use Bitrix\Main\Loader;
+use Bitrix\Sale;
+use Bitrix\CSaleBasket;
+
 use CUser;
 
-Loader::includeModule('sale');
-
+// Loader::includeModule('sale');
+\Bitrix\Main\Loader::includeModule("sale");
+\Bitrix\Main\Loader::includeModule("catalog");
 
 
 class OrderController
@@ -117,13 +121,18 @@ class OrderController
     //   'filter' => ['USER_ID' => $userId, 'ID' => $orderId],
     //   'select' => ['ID'],
     // ]);
+
     $_item = Order::getList([
       'filter' => ['ID' => $orderId],
-      'select' => ['*'],
+      'select' => ["*"],
     ]);
+    $basket = BasketController::getBasketByOrderId($orderId);
 
     if ($item = $_item->fetch()) {
-      return $resp->is200Response($response, $item);
+      $item["DATE_INSERT"] = $item["DATE_INSERT"]->format("Y-m-d H:i:s");
+      $item["TOTAL_PRODUCTS"] = count($basket);
+
+      return $resp->is200Response($response, [...$item, "BASKET" => $basket]);
     } else return $resp->is400Response($response, "ничего не найдено");
   }
 
