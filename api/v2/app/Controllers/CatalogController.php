@@ -26,12 +26,13 @@ use CIBlock;
 class CatalogController
 {
 
-  public static function getTest($request){
+  public static function getTest($request)
+  {
     $filter = $request->getQueryParams()['filter'];
     $items = CIBlockSection::GetList([], [...$filter]);
     // $items = CIBlockSection::GetList([], [...$filter, "!IBLOCK_CODE"=>'documentaciya']);
     // $items = CIBlockSection::GetList([], [...$filter, "IBLOCK_TYPE_ID" => "catalog"]);
-    while ($item = $items->GetNext()){
+    while ($item = $items->GetNext()) {
       $result[] = $item;
     }
     return $result;
@@ -401,7 +402,7 @@ class CatalogController
       $items[] = [
         ...$item,
         "storage" => $tositemap ?  "" : CCatalogProduct::GetByID($item["ID"]),
-        "properties" => $tositemap ?  "" : CatalogController::getNotNullProperties($item["ID"], 10, $filter["ID"]),
+        "properties" => $tositemap ?  "" : CatalogController::getNotNullProperties($item["ID"], 10, $filter["ID"] ?? $item["IBLOCK_ID"]),
         "image" => $item["PREVIEW_PICTURE"] ? CFile::GetPath($item["PREVIEW_PICTURE"]) : CFile::GetPath($item["DETAIL_PICTURE"]),
         "images" => $tositemap ?  "" : self::getImages($item["PROPERTY_MORE_PHOTO_VALUE"]),
         // "price" => $tositemap ?  "" : $item["PROPERTY_MINIMUM_PRICE_VALUE"],
