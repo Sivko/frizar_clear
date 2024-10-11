@@ -69,6 +69,8 @@ function custom_mail($to, $subject, $message, $additionalHeaders = '')
   // $mail->Password   = '';
   $mail->SMTPSecure = 'ssl';
   $mail->Port   = 465;
+  $mail->CharSet = "UTF-8";
+
 
   $to = str_replace(' ', '', $to);
   $address = explode(',', $to);
