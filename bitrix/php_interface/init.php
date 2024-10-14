@@ -1,6 +1,8 @@
 <?php
 
+
 use Bitrix\Main;
+use CIBlockElement;
 
 CModule::IncludeModule('currency');
 
@@ -10,22 +12,108 @@ header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Or
 header('Access-Control-Allow-Methods: GET, POST');
 \Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
 
+function createSiteMap()
+{
 
+  // Инициализируем глобальный объект $USER
+  global $USER;
+  $USER = new CUser;
 
-// Функция для создания siteMap (должно запускаться каждый день через агент-контроллер, или по триггеру, например от ТГ бота)
-if (!function_exists('createSiteMap')) {
-  function createSiteMap()
-  {
-    $dom = new DOMDocument('1.0', 'utf-8');
-    $strXML = '<?xml version="1.0" encoding="utf-8"?><root><item>Первый</item><item>Второй</item></root>';
-    $dom->loadXML($strXML);
-    $xml = $dom->saveXML();
-    echo htmlspecialchars($xml);
-    $dom->save(dirname(dirname(__DIR__)).'/doc.xml');
-    // echo ;
+  // Задаем авторизованного пользователя вручную (например, ID = 1)
+  $USER->Authorize(1);
+  $filter = ["IBLOCK_ID" => 10];
+  $fields = ["CODE", "TIMESTAMP_X"];
+  $result = CIBlockElement::GetList(array(), $filter, false, false, $fields);
+  while ($item = $result->Fetch()) {
+    $elements[] = $item;
   }
+  $dom = new DOMDocument('1.0', 'utf-8');
+  $strXML = '<?xml version="1.0" encoding="utf-8"?>';
+  $strXML .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+  foreach ($elements as $element) {
+    $strXML .= '<url>';
+    $strXML .= '<loc>' . 'https://vs113.ru/product/' . $element["CODE"] . '</loc>';
+    $strXML .= '<lastmod>' . date("Y-m-d", strtotime($element['TIMESTAMP_X'])) . '</lastmod>';
+    $strXML .= '<changefreq>' . 'monthly' . '</changefreq>';
+    $strXML .= '<priority>' . '0.8' . '</priority>';
+    $strXML .= '</url>';
+  }
+  $strXML .= '</urlset>';
+  $dom->loadXML($strXML);
+  $xml = $dom->saveXML();
+  $dom->save(dirname(dirname(__DIR__)) . '/sitemap.xml');
+  return $elements;
 }
 
+function getPrice($productID)
+{
+  $arPrice = CCatalogProduct::GetOptimalPrice($productID, 1, []);
+  return $arPrice["RESULT_PRICE"]["BASE_PRICE"];
+}
+
+function generateYML()
+{
+  // Инициализируем глобальный объект $USER
+  global $USER;
+  $USER = new CUser;
+
+  // Задаем авторизованного пользователя вручную (например, ID = 1)
+  $USER->Authorize(1);
+  $filter = ["IBLOCK_ID" => 10];
+  $fields = ["ID", "CODE", "NAME", "DETAIL_TEXT", "DETAIL_PICTURE"];
+  $result = CIBlockElement::GetList(array(), $filter, false, false, $fields);
+  while ($item = $result->Fetch()) {
+    $propResult = CIBlockElement::GetProperty(10, $item['ID']);
+    while ($prop = $propResult->Fetch()) {
+      $item[$prop['CODE']] = $prop['VALUE'];
+      $item['PRICE'] = getPrice($item["ID"]);
+    }
+    $products[] = $item;
+  }
+  header("Content-Type: text/xml; charset=utf-8");
+
+  $dom = new DOMDocument('1.0', 'utf-8');
+  $dom->formatOutput = true;
+
+  // Создаем корневой элемент
+  $shop = $dom->createElement('shop');
+  $dom->appendChild($shop);
+
+  // Добавляем необходимые элементы
+  $shop->appendChild($dom->createElement('name', 'frizar.ru'));
+  $shop->appendChild($dom->createElement('company', 'ООО Фризар'));
+  $shop->appendChild($dom->createElement('url', 'https://www.vs113.ru'));
+
+  // Добавляем товары
+  $offers = $dom->createElement('offers');
+  $shop->appendChild($offers);
+
+  foreach ($products as $product) {
+    $offer = $dom->createElement('offer');
+
+    $offer->appendChild($dom->createElement('id', $product['ID']));
+    $offer->appendChild($dom->createElement('name', htmlspecialchars($product['NAME'])));
+    $offer->appendChild($dom->createElement('price', $product['PRICE']));
+    $offer->appendChild($dom->createElement('currencyId', 'RUB'));
+    $offer->appendChild($dom->createElement('categoryId', $product['IBLOCK_SECTION_ID']));
+    $offer->appendChild($dom->createElement('picture', $product['DETAIL_PICTURE']));
+    $offer->appendChild($dom->createElement('description', htmlspecialchars($product['DETAIL_TEXT'])));
+
+    // // Дополнительные параметры
+    // if (isset($product['param'])) {
+    //   foreach ($product['param'] as $paramName => $paramValue) {
+    //     $param = $dom->createElement('param', htmlspecialchars($paramValue));
+    //     $param->setAttribute('name', htmlspecialchars($paramName));
+    //     $offer->appendChild($param);
+    //   }
+    // }
+
+    $offers->appendChild($offer);
+  }
+
+  //echo $dom->saveXML();
+  $dom->save('yml_export.xml'); // Сохраняем в файл
+}
 
 // Функция для обновления курса валюты (должно запускаться каждый день через агент-контроллер)
 if (!function_exists('getCurrency')) {

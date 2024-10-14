@@ -28,14 +28,15 @@ class CatalogController
 
   public static function getTest($request)
   {
-    $filter = $request->getQueryParams()['filter'];
-    $items = CIBlockSection::GetList([], [...$filter]);
-    // $items = CIBlockSection::GetList([], [...$filter, "!IBLOCK_CODE"=>'documentaciya']);
-    // $items = CIBlockSection::GetList([], [...$filter, "IBLOCK_TYPE_ID" => "catalog"]);
-    while ($item = $items->GetNext()) {
-      $result[] = $item;
+    $filter = ["IBLOCK_ID" => 10];
+    $fields = ["CODE", "TIMESTAMP_X"];
+    $elements= [];
+    $result = CIBlockElement::GetList(array(), $filter, false, false, $fields);
+    while ($item = $result->Fetch()) {
+      $elements[]=$item;
     }
-    return $result;
+    // $elements[] = $result->Fetch();
+    return $elements;
   }
 
   public static function getImages($elements)
@@ -526,3 +527,5 @@ class CatalogController
     );
   }
 }
+
+
