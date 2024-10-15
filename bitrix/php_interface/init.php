@@ -51,7 +51,13 @@ function getPrice($productID)
   return $arPrice["RESULT_PRICE"]["BASE_PRICE"];
 }
 
-function generateYML()
+function testAgent()
+{
+	echo 123123;
+	return "testAgent();";
+}
+
+function generateYMLAgent()
 {
   // Инициализируем глобальный объект $USER
   global $USER;
@@ -143,7 +149,7 @@ function generateYML()
     $offers->appendChild($offer);
   }
   $dom->save(dirname(dirname(__DIR__)) . '/yml_export.xml');
-  //$dom->save('yml_export.xml'); // Сохраняем в файл
+  //return "generateYMLAgent();"; 
 }
 
 // Функция для обновления курса валюты (должно запускаться каждый день через агент-контроллер)

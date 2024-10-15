@@ -15,8 +15,8 @@ excludes=(
   bitrix/tmp
 )
 
-Path_From=./
-Path_To=root@31.128.46.89:/root/backend/
+Path_From=root@31.128.46.89:/root/backend/
+Path_To=./
 
 exclude_str="rsync -avz -e 'ssh -i ~/.ssh/id_rsa' $Path_From $Path_To"
 
