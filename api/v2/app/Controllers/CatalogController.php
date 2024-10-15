@@ -30,10 +30,10 @@ class CatalogController
   {
     $filter = ["IBLOCK_ID" => 10];
     $fields = ["CODE", "TIMESTAMP_X"];
-    $elements= [];
+    $elements = [];
     $result = CIBlockElement::GetList(array(), $filter, false, false, $fields);
     while ($item = $result->Fetch()) {
-      $elements[]=$item;
+      $elements[] = $item;
     }
     // $elements[] = $result->Fetch();
     return $elements;
@@ -426,6 +426,11 @@ class CatalogController
         $include_sections[] = $_section;
       }
     }
+
+    //Получить минимальную цену продуктов для категории
+    $_minimumPrice = CIBlockElement::GetList(["catalog_PRICE_2" => "desk"], [...$elements_filter, ">CATALOG_PRICE_2" => 0, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => 1, 'iNumPage' => 1], $el_selected_fields)->Fetch();
+    $minimumPrice = self::getPrice($_minimumPrice["ID"], 1);
+
     return $resp->is200Response(
       $response,
       [
@@ -433,6 +438,7 @@ class CatalogController
           "meta_title" => $meta["SECTION_META_TITLE"] ?? $section["NAME"],
           "meta_description" => $meta["SECTION_META_DESCRIPTION"] ?? "",
         ],
+        "minimumPrice" => $minimumPrice,
         "section" => $section,
         "include_sections" => $getSections ? $include_sections : null,
         'breadcrumbs' => self::getBreadcrumb($section["ID"]),
@@ -527,5 +533,3 @@ class CatalogController
     );
   }
 }
-
-
