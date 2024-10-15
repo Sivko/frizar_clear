@@ -79,9 +79,14 @@ function generateYML()
   $dom = new DOMDocument('1.0', 'utf-8');
   $dom->formatOutput = true;
 
+  $ymlCatalog = $dom->createElement('yml_catalog');
+  $ymlCatalog->setAttribute('date', date('Y-m-d\TH:i:sP'));
+
   // Создаем корневой элемент
   $shop = $dom->createElement('shop');
-  $dom->appendChild($shop);
+  $ymlCatalog->appendChild($shop);
+
+  $dom->appendChild($ymlCatalog);
 
   // Получаем категории
   $categories = [];
@@ -119,7 +124,7 @@ function generateYML()
     $offer->appendChild($dom->createElement('name', htmlspecialchars($product['NAME'])));
     $offer->appendChild($dom->createElement('picture', $product['PICTURE']));
     $offer->appendChild($dom->createElement('vendor', $product['BRAND']));
-    $offer->appendChild($dom->createElement('description', $product["DETAIL_TEXT"]));
+    $offer->appendChild($dom->createElement('description', str_replace('&', "", $product["DETAIL_TEXT"])));
     $offer->appendChild($dom->createElement('currencyId', 'RUB'));
     $offer->appendChild($dom->createElement('categoryId', $product['IBLOCK_SECTION_ID']));
 
