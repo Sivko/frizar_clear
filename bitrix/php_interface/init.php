@@ -60,14 +60,18 @@ function generateYML()
   // Задаем авторизованного пользователя вручную (например, ID = 1)
   $USER->Authorize(1);
   $filter = ["IBLOCK_ID" => 10];
-  $fields = ["ID", "CODE", "NAME", "DETAIL_TEXT", "DETAIL_PICTURE"];
+  $fields = ["ID", "CODE", "NAME", "IBLOCK_SECTION_ID", "DETAIL_TEXT", "DETAIL_PICTURE"];
   $result = CIBlockElement::GetList(array(), $filter, false, false, $fields);
   while ($item = $result->Fetch()) {
-    $propResult = CIBlockElement::GetProperty(10, $item['ID']);
-    while ($prop = $propResult->Fetch()) {
-      $item[$prop['CODE']] = $prop['VALUE'];
-      $item['PRICE'] = getPrice($item["ID"]);
+    $item['PRICE'] = getPrice($item["ID"]);
+    $item['PICTURE'] = CFile::GetPath($item["DETAIL_PICTURE"]);
+    $properties = CIBlockElement::GetProperty(10, $item["ID"], ["sort" => "asc"], ["ACTIVE" => "Y"]);
+    while ($prop = $properties->Fetch()) {
+        if ($prop['NAME'] === 'Бренд') { 
+            $item['BRAND'] = $prop['VALUE_ENUM'];
+        }
     }
+
     $products[] = $item;
   }
   header("Content-Type: text/xml; charset=utf-8");
@@ -79,10 +83,30 @@ function generateYML()
   $shop = $dom->createElement('shop');
   $dom->appendChild($shop);
 
+  // Получаем категории
+  $categories = [];
+  $sectionFilter = ["IBLOCK_ID" => 10];
+  $sectionFields = ["ID", "NAME"];
+  $sectionResult = CIBlockSection::GetList([], $sectionFilter, true, $sectionFields);
+  
+  while ($section = $sectionResult->Fetch()) {
+      $categories[$section['ID']] = htmlspecialchars($section['NAME']);
+  }
+
   // Добавляем необходимые элементы
   $shop->appendChild($dom->createElement('name', 'frizar.ru'));
   $shop->appendChild($dom->createElement('company', 'ООО Фризар'));
-  $shop->appendChild($dom->createElement('url', 'https://www.vs113.ru'));
+  $shop->appendChild($dom->createElement('url', 'https://vs113.ru'));
+
+  // Добавляем категории
+  $categoriesElement = $dom->createElement('categories');
+  $shop->appendChild($categoriesElement);
+  
+  foreach ($categories as $id => $name) {
+      $category = $dom->createElement('category', $name);
+      $category->setAttribute('id', $id);
+      $categoriesElement->appendChild($category);
+  }
 
   // Добавляем товары
   $offers = $dom->createElement('offers');
@@ -93,11 +117,14 @@ function generateYML()
 
     $offer->appendChild($dom->createElement('id', $product['ID']));
     $offer->appendChild($dom->createElement('name', htmlspecialchars($product['NAME'])));
-    $offer->appendChild($dom->createElement('price', $product['PRICE']));
+    $offer->appendChild($dom->createElement('picture', $product['PICTURE']));
+    $offer->appendChild($dom->createElement('vendor', $product['BRAND']));
+    $offer->appendChild($dom->createElement('description', $product["DETAIL_TEXT"]));
     $offer->appendChild($dom->createElement('currencyId', 'RUB'));
     $offer->appendChild($dom->createElement('categoryId', $product['IBLOCK_SECTION_ID']));
-    $offer->appendChild($dom->createElement('picture', $product['DETAIL_PICTURE']));
-    $offer->appendChild($dom->createElement('description', htmlspecialchars($product['DETAIL_TEXT'])));
+
+    //TODO: не выводит price, хотя он есть в product (вроде бы)
+    $offer->appendChild($dom->createElement('price', $product['PRICE']));
 
     // // Дополнительные параметры
     // if (isset($product['param'])) {
@@ -110,9 +137,8 @@ function generateYML()
 
     $offers->appendChild($offer);
   }
-
-  //echo $dom->saveXML();
-  $dom->save('yml_export.xml'); // Сохраняем в файл
+  $dom->save(dirname(dirname(__DIR__)) . '/yml_export.xml');
+  //$dom->save('yml_export.xml'); // Сохраняем в файл
 }
 
 // Функция для обновления курса валюты (должно запускаться каждый день через агент-контроллер)
