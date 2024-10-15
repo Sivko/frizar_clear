@@ -10,6 +10,8 @@ excludes=(
   /bitrix/php_inteface/dbconn.php
   /.vscode
   /upload
+  yml_export.xml
+  sitemap.xml
   bitrix/tmp
 )
 
