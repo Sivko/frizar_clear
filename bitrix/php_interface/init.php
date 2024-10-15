@@ -27,7 +27,7 @@ function createSiteMap()
   while ($item = $result->Fetch()) {
     $elements[] = $item;
   }
-  $dom = new DOMDocument('1.0', 'utf-8');
+  $dom = new DOMDocument('1.0', 'UTF-8');
   $strXML = '<?xml version="1.0" encoding="utf-8"?>';
   $strXML .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
   foreach ($elements as $element) {
