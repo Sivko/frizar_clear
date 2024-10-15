@@ -438,7 +438,7 @@ class CatalogController
           "meta_title" => $meta["SECTION_META_TITLE"] ?? $section["NAME"],
           "meta_description" => $meta["SECTION_META_DESCRIPTION"] ?? "",
         ],
-        "minimumPrice" => $minimumPrice,
+        "minimum_price" => $minimumPrice,
         "section" => $section,
         "include_sections" => $getSections ? $include_sections : null,
         'breadcrumbs' => self::getBreadcrumb($section["ID"]),
