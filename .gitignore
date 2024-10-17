@@ -14,3 +14,4 @@ bitrix/php_interface/*
 api/.DS_Store
 api/v2/.DS_Store
 api/v2/.DS_Store
+!Dockerfile
