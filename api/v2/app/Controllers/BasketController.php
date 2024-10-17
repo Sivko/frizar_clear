@@ -69,7 +69,7 @@ class BasketController
     $result = \Bitrix\Catalog\Product\Basket::addProductToBasket($basket, $product, array('SITE_ID' => "s1"));
     if ($result->isSuccess()) {
       $basket->save();
-      return (["message" => "Товар успешно добавлен" . $fuser, "success" => true]);
+      return (["message" => "Товар успешно добавлен", "success" => true]);
     } else {
       return ["message" => implode(',', $result->getErrorMessages()), "success" => false];
     }

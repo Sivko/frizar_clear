@@ -65,9 +65,16 @@ return function (App $app) {
             return $resp->is200Response($response, CatalogController::getFirstProductByFilter(["ID" => "1890"]));
         });
     });
-    // $app->get("/sections", function ($request, $response) {
-    //     return CatalogController::getItemsByFilter($request, $response);
-    // });
+
+    $app->get("/catalog-fasets", function ($request, Response $response) {
+        $resp = new CustomResponse();
+        return CatalogController::getFasets($request, $response);
+    });
+
+    $app->get("/catalog-meilisearch", function ($request, Response $response) {
+        $resp = new CustomResponse();
+        return $resp->is200Response($response, CatalogController::getFirstProductByFilter(["ID" => "1890"]));
+    });
 
     $app->get("/search", function ($request, $response) {
         $resp = new CustomResponse();
