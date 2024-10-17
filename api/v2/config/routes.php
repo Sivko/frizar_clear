@@ -32,8 +32,8 @@ return function (App $app) {
         $response = $response
             ->withHeader('Access-Control-Allow-Credentials', 'true')
             // ->withHeader('Access-Control-Allow-Origin', '*')
-            ->withHeader('Access-Control-Allow-Origin', 'https://vs113.ru')
-            // ->withHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+            // ->withHeader('Access-Control-Allow-Origin', 'https://vs113.ru')
+            ->withHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         return $response;
@@ -65,9 +65,16 @@ return function (App $app) {
             return $resp->is200Response($response, CatalogController::getFirstProductByFilter(["ID" => "1890"]));
         });
     });
-    // $app->get("/sections", function ($request, $response) {
-    //     return CatalogController::getItemsByFilter($request, $response);
-    // });
+
+    $app->get("/catalog-fasets", function ($request, Response $response) {
+        $resp = new CustomResponse();
+        return CatalogController::getFasets($request, $response);
+    });
+
+    $app->get("/catalog-meilisearch", function ($request, Response $response) {
+        $resp = new CustomResponse();
+        return $resp->is200Response($response, CatalogController::getFirstProductByFilter(["ID" => "1890"]));
+    });
 
     $app->get("/search", function ($request, $response) {
         $resp = new CustomResponse();
