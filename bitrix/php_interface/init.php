@@ -102,7 +102,7 @@ function generateYMLAgent()
     $shop->appendChild($dom->createElement('name', 'frizar.ru'));
     $shop->appendChild($dom->createElement('company', 'ООО Фризар'));
     $shop->appendChild($dom->createElement('url', 'https://vs113.ru'));
-
+    $shop->appendChild($dom->createElement('currencies', 'RUB'));
     // Добавляем категории
     $categoriesElement = $dom->createElement('categories');
     $shop->appendChild($categoriesElement);
@@ -121,12 +121,17 @@ function generateYMLAgent()
         $offer = $dom->createElement('offer');
 
         $offer->appendChild($dom->createElement('id', $product['ID']));
+        $offer->appendChild($dom->createElement('url', htmlspecialchars(CFile::GetPath($product["DETAIL_PICTURE"]))));
+        
         $offer->appendChild($dom->createElement('name', htmlspecialchars($product['NAME'])));
         $offer->appendChild($dom->createElement('picture', $product['PICTURE']));
         $offer->appendChild($dom->createElement('vendor', $product['BRAND']));
-        $offer->appendChild($dom->createElement('description', str_replace('&', "", $product["DETAIL_TEXT"])));
+        $offer->appendChild($dom->createElement('description', strip_tags($product["DETAIL_TEXT"])));
         $offer->appendChild($dom->createElement('currencyId', 'RUB'));
         $offer->appendChild($dom->createElement('categoryId', $product['IBLOCK_SECTION_ID']));
+        $offer->appendChild($dom->createElement('store', false));
+        $offer->appendChild($dom->createElement('pickup', true));
+        $offer->appendChild($dom->createElement('delivery', true));
 
         //TODO: не выводит price, хотя он есть в product (вроде бы)
         $offer->appendChild($dom->createElement('price', $product['PRICE']));
