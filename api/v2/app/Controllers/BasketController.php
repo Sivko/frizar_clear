@@ -139,7 +139,7 @@ class BasketController
     $currencyCode = "RUB";
 
     // Создаёт новый заказ
-    $order = \Bitrix\Sale\Order::create($siteId, $user->isAuthorized() ? $user->GetID() : 1);
+    $order = \Bitrix\Sale\Order::create($siteId, $user->isAuthorized() ? $user->GetID() : 12);
     $order->setPersonTypeId($personalTypeId);
     $order->setField('CURRENCY', $currencyCode);
     if ($comment) {
