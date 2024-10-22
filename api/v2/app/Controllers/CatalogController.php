@@ -372,19 +372,20 @@ class CatalogController
     $_items = CIBlockElement::GetList([$orderBy => $order], [...$elements_filter, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => $offset, 'iNumPage' => $page], $el_selected_fields);
 
     while ($item = $_items->GetNext()) {
-      foreach ($item as $key => $value) {
-        // Убираем тильду из ключа
-        $newKey = ltrim($key, '~');
-        $resultItem[$newKey] = $value;
-      }
+      // foreach ($item as $key => $value) {
+      // Убираем тильду из ключа
+      // $newKey = ltrim($key, '~');
+      // $resultItem[$newKey] = $key;
+      // }
       $properties = CatalogController::getNotNullProperties($item["ID"], false, $filter["ID"] ?? $item["IBLOCK_ID"]);
-      $fasets=[];
-      foreach ($properties as $key => $value) {
-        $fasets["faset_" . HelpersController::translit($value["NAME"])] = $value["VALUE"];
-        // $fasets[] = HelpersController::translit($value["NAME"]);
-      }
+      $fasets = [];
+      // foreach ($properties as $key => $value) {
+      //   $fasets["faset_" . HelpersController::translit($value["NAME"])] = $value["VALUE"];
+      //   // $fasets[] = HelpersController::translit($value["NAME"]);
+      // }
       $items[] = [
-        ...$resultItem,
+        // ...$resultItem,
+        ...$item,
         ...$fasets,
         "catalog_link" => CIBlockSection::GetByID($item['IBLOCK_SECTION_ID'])->GetNext()["SECTION_PAGE_URL"],
         "storage" => $tositemap ?  "" : ["QUANTITY" => CCatalogProduct::GetByID($item["ID"])["QUANTITY"]],
@@ -395,6 +396,7 @@ class CatalogController
         "link" => $tositemap ?  "" : self::createLinkByRules($section["DETAIL_PAGE_URL"], $item["CODE"], $item["IBLOCK_SECTION_ID"], $item["IBLOCK_ID"]),
       ];
     }
+    // return $resp->is200Response($response,$elements_filter);
 
     // return $resp->is200Response($response,$fasets);
     $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $section["ID"]);
@@ -412,7 +414,8 @@ class CatalogController
     }
 
     //Получить минимальную цену продуктов для категории
-    $_minimumPrice = CIBlockElement::GetList(["catalog_PRICE_2" => "desk"], [...$elements_filter, ">CATALOG_PRICE_2" => 0, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => 1, 'iNumPage' => 1], $el_selected_fields)->Fetch();
+    $_minimumPrice = CIBlockElement::GetList(["property_MINIMUM_PRICE" => "asc"], [...$elements_filter, ">property_MINIMUM_PRICE" => 0, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => 40], ["ID"])->Fetch();
+
     $minimumPrice = self::getPrice($_minimumPrice["ID"], 1);
 
     $time_end = microtime(true);
@@ -450,13 +453,13 @@ class CatalogController
     while ($item = $_items->GetNext()) {
       $properties = CatalogController::getNotNullProperties($item["ID"], false, $item["IBLOCK_ID"]);
       foreach ($properties as $key => $value) {
-        $fasets["faset_".HelpersController::translit($value["NAME"])] = "";
+        $fasets["faset_" . HelpersController::translit($value["NAME"])] = "";
       }
     }
     foreach ($fasets as $key => $value) {
       $excludes = ["faset_Artikul", "faset_Fayly", "faset_ShtrihKod"];
       if (in_array($key, $excludes)) continue;
-      $arrFaces[] = $key; 
+      $arrFaces[] = $key;
     }
 
     return $resp->is200Response($response, $arrFaces);
