@@ -531,6 +531,11 @@ class CatalogController
     $total_items = (int)$_items->SelectedRowsCount();
     $total_pages = (int)(ceil($total_items / $offset) ?? 1);
 
+    //Получить минимальную цену продуктов для категории
+    $_minimumPrice = CIBlockElement::GetList(["property_MINIMUM_PRICE" => "asc"], [...$el_filter, ">property_MINIMUM_PRICE" => 0, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => 40], ["ID"])->Fetch();
+
+    $minimumPrice = self::getPrice($_minimumPrice["ID"], 1);
+
     // return $total_pages;
     return $resp->is200Response(
       $response,
@@ -539,6 +544,7 @@ class CatalogController
           "meta_title" => $meta["SECTION_META_TITLE"] ? $meta["SECTION_META_TITLE"] : $section["NAME"],
           "meta_description" => $meta["SECTION_META_DESCRIPTION"] ?? "",
         ],
+        'minimum_price' => $minimumPrice,
         // 'breadcrumbs' => self::getBreadcrumb($section["IBLOCK_SECTION_ID"]),
         'breadcrumbs' => self::getBreadcrumb($section["IBLOCK_SECTION_ID"]),
         'pagination' => [
