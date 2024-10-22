@@ -4,6 +4,20 @@
 use Bitrix\Main;
 use CIBlockElement;
 
+use Bitrix\Catalog\Model\Event;
+
+$eventManager = \Bitrix\Main\EventManager::getInstance();
+$eventManager->addEventHandler(
+    'catalog',
+    'Bitrix\Catalog\Model\Price::OnAfterAdd',
+    ['ToEvents', 'onSetMinimumPrice']
+);
+$eventManager->addEventHandler(
+    'catalog',
+    'Bitrix\Catalog\Model\Price::OnAfterUpdate',
+    ['ToEvents', 'onSetMinimumPrice']
+);
+
 CModule::IncludeModule('currency');
 
 header('Access-Control-Allow-Origin: *');
@@ -13,6 +27,30 @@ header('Access-Control-Allow-Methods: GET, POST');
 \Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
 
 $iblock_id = 2;
+define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/log.txt");
+// AddMessage2Log(json_encode($arFields["PRODUCT_ID"]));
+
+
+class ToEvents
+{
+    protected static $eventDeployed = false;
+    protected static $eventOrder = [];
+
+    public static function getPrice($productID)
+    {
+        $arPrice = CCatalogProduct::GetOptimalPrice($productID, 1, []);
+        // AddMessage2Log($arPrice["RESULT_PRICE"]["BASE_PRICE"]);
+        return $arPrice["RESULT_PRICE"]["BASE_PRICE"];
+    }
+    public static function onSetMinimumPrice(Event $event): void
+    {
+        //убирает галочку - НДС включен в цену и добавляет цену для сортировки
+        $arFields  =  $event->getParameter('fields');
+        CIBlockElement::SetPropertyValuesEx($arFields['PRODUCT_ID'], false, ['VAT_INCLUDED' => 'N']);
+        $minimum_price = self::getPrice($arFields["PRODUCT_ID"]);
+        CIBlockElement::SetPropertyValuesEx($arFields['PRODUCT_ID'], false, ['minimum_price' => $minimum_price]);
+    }
+}
 
 function createSiteMap()
 {
@@ -44,11 +82,7 @@ function createSiteMap()
     return $elements;
 }
 
-function getPrice($productID)
-{
-    $arPrice = CCatalogProduct::GetOptimalPrice($productID, 1, []);
-    return $arPrice["RESULT_PRICE"]["BASE_PRICE"];
-}
+
 
 function generateYMLAgent()
 {
@@ -63,7 +97,7 @@ function generateYMLAgent()
     $fields = ["ID", "CODE", "NAME", "IBLOCK_SECTION_ID", "DETAIL_TEXT", "DETAIL_PICTURE"];
     $result = CIBlockElement::GetList(array(), $filter, false, false, $fields);
     while ($item = $result->Fetch()) {
-        $item['PRICE'] = getPrice($item["ID"]);
+        $item['PRICE'] = ToEvents::getPrice($item["ID"]);
         $item['PICTURE'] = CFile::GetPath($item["DETAIL_PICTURE"]);
         $properties = CIBlockElement::GetProperty(10, $item["ID"], ["sort" => "asc"], ["ACTIVE" => "Y"]);
         while ($prop = $properties->Fetch()) {
@@ -122,7 +156,7 @@ function generateYMLAgent()
 
         $offer->appendChild($dom->createElement('id', $product['ID']));
         $offer->appendChild($dom->createElement('url', htmlspecialchars(CFile::GetPath($product["DETAIL_PICTURE"]))));
-        
+
         $offer->appendChild($dom->createElement('name', htmlspecialchars($product['NAME'])));
         $offer->appendChild($dom->createElement('picture', $product['PICTURE']));
         $offer->appendChild($dom->createElement('vendor', $product['BRAND']));
