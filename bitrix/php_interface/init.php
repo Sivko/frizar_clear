@@ -81,7 +81,7 @@ function createSiteMap()
     $strXML .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     foreach ($elements as $element) {
         $strXML .= '<url>';
-        $strXML .= '<loc>' . 'https://vs113.ru/product/' . $element["CODE"] . '</loc>';
+        $strXML .= '<loc>' . 'https://frizar.ru/product/' . $element["CODE"] . '</loc>';
         $strXML .= '<lastmod>' . date("Y-m-d", strtotime($element['TIMESTAMP_X'])) . '</lastmod>';
         $strXML .= '<changefreq>' . 'monthly' . '</changefreq>';
         $strXML .= '<priority>' . '0.8' . '</priority>';
@@ -147,7 +147,7 @@ function generateYMLAgent()
     // Добавляем необходимые элементы
     $shop->appendChild($dom->createElement('name', 'frizar.ru'));
     $shop->appendChild($dom->createElement('company', 'ООО Фризар'));
-    $shop->appendChild($dom->createElement('url', 'https://vs113.ru'));
+    $shop->appendChild($dom->createElement('url', 'https://frizar.ru'));
     $shop->appendChild($dom->createElement('currencies', 'RUB'));
     // Добавляем категории
     $categoriesElement = $dom->createElement('categories');
