@@ -24,5 +24,5 @@ for exclude in "${excludes[@]}"; do
     exclude_str+=" --exclude=$exclude "
 done
 
-
+rsync -avz -e 'ssh -i ~/.ssh/id_rsa' ./bitrix/php_interface/init.php root@31.128.46.89:/root/backend2/bitrix/php_interface/
 eval $exclude_str
