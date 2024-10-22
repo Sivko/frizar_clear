@@ -19,6 +19,7 @@ $eventManager->addEventHandler(
 );
 
 CModule::IncludeModule('currency');
+CModule::IncludeModule('iblock');
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
@@ -26,16 +27,27 @@ header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Or
 header('Access-Control-Allow-Methods: GET, POST');
 \Bitrix\Main\Context::getCurrent()->getResponse()->writeHeaders();
 
-$iblock_id = 2;
-define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/log.txt");
+$iblock_id = 20;
+define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"] . "/log.txt");
 // AddMessage2Log(json_encode($arFields["PRODUCT_ID"]));
 
 
+// Вызывается один раз для при инициализации БД
+function updateMinimumPriceAllProducts()
+{
+    global $iblock_id;
+    $filter = ["IBLOCK_ID" => $iblock_id, "ACTIVE" => "Y", "TYPE" => "1"];
+    $res = CIBlockElement::GetList(array(), $filter, false, false, ["ID"]);
+    while ($el = $res->GetNext()) {
+        CIBlockElement::SetPropertyValuesEx($el['ID'], false, ['VAT_INCLUDED' => 'N']);
+        $minimum_price = ToEvents::getPrice($el["ID"]);
+        CIBlockElement::SetPropertyValuesEx($el['ID'], false, ['MINIMUM_PRICE' => $minimum_price]);
+    }
+    echo "OK";
+}
+
 class ToEvents
 {
-    protected static $eventDeployed = false;
-    protected static $eventOrder = [];
-
     public static function getPrice($productID)
     {
         $arPrice = CCatalogProduct::GetOptimalPrice($productID, 1, []);
@@ -48,7 +60,7 @@ class ToEvents
         $arFields  =  $event->getParameter('fields');
         CIBlockElement::SetPropertyValuesEx($arFields['PRODUCT_ID'], false, ['VAT_INCLUDED' => 'N']);
         $minimum_price = self::getPrice($arFields["PRODUCT_ID"]);
-        CIBlockElement::SetPropertyValuesEx($arFields['PRODUCT_ID'], false, ['minimum_price' => $minimum_price]);
+        CIBlockElement::SetPropertyValuesEx($arFields['PRODUCT_ID'], false, ['MINIMUM_PRICE' => $minimum_price]);
     }
 }
 
