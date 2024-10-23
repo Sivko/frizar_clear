@@ -205,7 +205,7 @@ class BasketController
       ];
     }
     // Выводим корзину в формате JSON
-    return (["items" => $basketItems, "total" => $total, "count" => $countItems]);
+    return (["items" => $basketItems, "total" => round($total, 2), "count" => $countItems]);
   }
 
   public static function getBasketByOrderId($orderId)
