@@ -526,7 +526,7 @@ class CatalogController
       ];
     }
 
-    $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $section["ID"]);
+    $meta = new ElementValues($section["IBLOCK_ID"], $section["ID"]);
     $meta = $meta->getValues();
     $total_items = (int)$_items->SelectedRowsCount();
     $total_pages = (int)(ceil($total_items / $offset) ?? 1);
@@ -541,7 +541,7 @@ class CatalogController
       $response,
       [
         "meta" => [
-          "meta_title" => $meta["SECTION_META_TITLE"] ? $meta["SECTION_META_TITLE"] : $section["NAME"],
+          "meta_title" => $meta["ELEMENT_META_TITLE"],
           "meta_description" => $meta["SECTION_META_DESCRIPTION"] ?? "",
         ],
         'minimum_price' => $minimumPrice,
