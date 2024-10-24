@@ -14,6 +14,7 @@ use CIBlockElement;
 use CCatalogProduct;
 use CFile;
 use CIBlockSection;
+use CPHPCache;
 
 use Bitrix\Iblock\InheritedProperty\IblockValues; //для инфоблока ($iblockId); 
 use Bitrix\Iblock\InheritedProperty\SectionValues; //для раздела ($iblockId,$sectionId); 
@@ -337,10 +338,10 @@ class CatalogController
 
   public static function getItemsByFilter($request, $response)
   {
+    $resp = new CustomResponse();
     $time_start = microtime(true);
 
     $tositemap =  $request->getQueryParams()['tositemap'];
-    $resp = new CustomResponse();
     $orderBy = $request->getQueryParams()['orderBy'] ?? $_ENV["ORDER_BY_DEFAULT"];
     $offset = ((int)($request->getQueryParams()['offset'] ?? $_ENV["OFFSET_DEFAULT"]));
     $offset = $offset < 11000 ? $offset : $_ENV["OFFSET_DEFAULT"];
@@ -350,85 +351,94 @@ class CatalogController
     $getSections = ((bool)$request->getQueryParams()['sections']) ?? false;
     $q = $request->getQueryParams()['q'];
 
-
     $isinfo = $request->getQueryParams()['isinfo'];
     $filter = $request->getQueryParams()['filter'];
     $el_filter = $request->getQueryParams()['el_filter'] ?? [];
     $el_selected_fields = $tositemap ? ["ID", "TIMESTAMP_X_UNIX", "CODE"] : explode(",", $_ENV["PRODUCT_POPERTY_FIELDS"]);
 
+    $obCache = new CPHPCache();
+    $cache_key = join("", [$orderBy, $offset, $order, $page, $getSections, $isinfo, ...$filter, ...$el_filter, $q]);
 
-    foreach ($el_filter as &$value) {
-      if ($value == "false") $value = false;
-      else $value = $value;
-    }
-
-
-    if (!$filter) return $resp->is400Response($response, ["error" => "not params"]);
-
-    $section = $isinfo ?  \CIBlock::GetList([], [...$filter])->GetNext() : CIBlockSection::GetList([], [...$filter, "IBLOCK_TYPE_ID" => "catalog"])->GetNext();
-    $elements_filter = $isinfo ? ["ACTIVE" => "Y", "IBLOCK_ID" => $section["ID"], ...$el_filter] : ["ACTIVE" => "Y", "SECTION_ID" => $section["ID"], ...$el_filter];
+    // return $resp->is200Response($response, ["lorem" => join("", [$orderBy, $offset, $order, $page, $getSections, $isinfo, ...$filter, ...$el_filter, $q])]);
 
 
-    $_items = CIBlockElement::GetList([$orderBy => $order], [...$elements_filter, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => $offset, 'iNumPage' => $page], $el_selected_fields);
+    if ($obCache->InitCache(86400, $cache_key)) {
+      //сначала пытаемся получить данные из кэша
+      $data = $obCache->GetVars();
+      return $resp->is200Response($response, ["cache" => "isCache", ...$data]);
+    } elseif ($obCache->StartDataCache()) {
 
-    while ($item = $_items->GetNext()) {
-      // foreach ($item as $key => $value) {
-      // Убираем тильду из ключа
-      // $newKey = ltrim($key, '~');
-      // $resultItem[$newKey] = $key;
-      // }
-      $properties = CatalogController::getNotNullProperties($item["ID"], false, $filter["ID"] ?? $item["IBLOCK_ID"]);
-      $fasets = [];
-      // foreach ($properties as $key => $value) {
-      //   $fasets["faset_" . HelpersController::translit($value["NAME"])] = $value["VALUE"];
-      //   // $fasets[] = HelpersController::translit($value["NAME"]);
-      // }
-      $items[] = [
-        // ...$resultItem,
-        ...$item,
-        ...$fasets,
-        "catalog_link" => CIBlockSection::GetByID($item['IBLOCK_SECTION_ID'])->GetNext()["SECTION_PAGE_URL"],
-        "storage" => $tositemap ?  "" : ["QUANTITY" => CCatalogProduct::GetByID($item["ID"])["QUANTITY"]],
-        "properties" => $tositemap ?  "" : $properties,
-        "image" => $item["PREVIEW_PICTURE"] ? CFile::GetPath($item["PREVIEW_PICTURE"]) : CFile::GetPath($item["DETAIL_PICTURE"]),
-        "images" => $tositemap ?  "" : self::getImages($item["PROPERTY_MORE_PHOTO_VALUE"]),
-        "price" => self::getPrice($item["ID"], 1),
-        "link" => $tositemap ?  "" : self::createLinkByRules($section["DETAIL_PAGE_URL"], $item["CODE"], $item["IBLOCK_SECTION_ID"], $item["IBLOCK_ID"]),
-      ];
-    }
-    // return $resp->is200Response($response,$elements_filter);
 
-    // return $resp->is200Response($response,$fasets);
-    $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $section["ID"]);
-    $meta = $meta->getValues();
-    $total_items = (int)$_items->SelectedRowsCount();
-    $total_pages = (int)(ceil($total_items / $offset) ?? 1);
-
-    // return $total_pages;
-    if ($getSections) {
-      $include_sections_filter = $isinfo ? ["IBLOCK_ID" => $section["ID"], "SECTION_ID" => 0] : ["SECTION_ID" => $section["ID"]];
-      $_include_sections = CIBlockSection::GetList([], [...$include_sections_filter, "ACTIVE" => "Y",]);
-      while ($_section = $_include_sections->GetNext()) {
-        $include_sections[] = $_section;
+      foreach ($el_filter as &$value) {
+        if ($value == "false") $value = false;
+        else $value = $value;
       }
-    }
 
-    //Получить минимальную цену продуктов для категории
-    $_minimumPrice = CIBlockElement::GetList(["property_MINIMUM_PRICE" => "asc"], [...$elements_filter, ">property_MINIMUM_PRICE" => 0, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => 40], ["ID"])->Fetch();
 
-    $minimumPrice = self::getPrice($_minimumPrice["ID"], 1);
+      if (!$filter) return $resp->is400Response($response, ["error" => "not params"]);
 
-    $time_end = microtime(true);
+      $section = $isinfo ?  \CIBlock::GetList([], [...$filter])->GetNext() : CIBlockSection::GetList([], [...$filter, "IBLOCK_TYPE_ID" => "catalog"])->GetNext();
+      $elements_filter = $isinfo ? ["ACTIVE" => "Y", "IBLOCK_ID" => $section["ID"], ...$el_filter] : ["ACTIVE" => "Y", "SECTION_ID" => $section["ID"], ...$el_filter];
 
-    return $resp->is200Response(
-      $response,
-      [
+
+      $_items = CIBlockElement::GetList([$orderBy => $order], [...$elements_filter, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => $offset, 'iNumPage' => $page], $el_selected_fields);
+
+      while ($item = $_items->GetNext()) {
+        // foreach ($item as $key => $value) {
+        // Убираем тильду из ключа
+        // $newKey = ltrim($key, '~');
+        // $resultItem[$newKey] = $key;
+        // }
+        $properties = CatalogController::getNotNullProperties($item["ID"], false, $filter["ID"] ?? $item["IBLOCK_ID"]);
+        $fasets = [];
+        // foreach ($properties as $key => $value) {
+        //   $fasets["faset_" . HelpersController::translit($value["NAME"])] = $value["VALUE"];
+        //   // $fasets[] = HelpersController::translit($value["NAME"]);
+        // }
+        $items[] = [
+          // ...$resultItem,
+          ...$item,
+          ...$fasets,
+          "catalog_link" => CIBlockSection::GetByID($item['IBLOCK_SECTION_ID'])->GetNext()["SECTION_PAGE_URL"],
+          "storage" => $tositemap ?  "" : ["QUANTITY" => CCatalogProduct::GetByID($item["ID"])["QUANTITY"]],
+          "properties" => $tositemap ?  "" : $properties,
+          "image" => $item["PREVIEW_PICTURE"] ? CFile::GetPath($item["PREVIEW_PICTURE"]) : CFile::GetPath($item["DETAIL_PICTURE"]),
+          "images" => $tositemap ?  "" : self::getImages($item["PROPERTY_MORE_PHOTO_VALUE"]),
+          "price" => self::getPrice($item["ID"], 1),
+          "link" => $tositemap ?  "" : self::createLinkByRules($section["DETAIL_PAGE_URL"], $item["CODE"], $item["IBLOCK_SECTION_ID"], $item["IBLOCK_ID"]),
+        ];
+      }
+      // return $resp->is200Response($response,$elements_filter);
+
+      // return $resp->is200Response($response,$fasets);
+      $meta = new SectionValues($_ENV["NEXT_PUBLIC_ID_PRODUCT"], $section["ID"]);
+      $meta = $meta->getValues();
+      $total_items = (int)$_items->SelectedRowsCount();
+      $total_pages = (int)(ceil($total_items / $offset) ?? 1);
+
+      // return $total_pages;
+      if ($getSections) {
+        $include_sections_filter = $isinfo ? ["IBLOCK_ID" => $section["ID"], "SECTION_ID" => 0] : ["SECTION_ID" => $section["ID"]];
+        $_include_sections = CIBlockSection::GetList([], [...$include_sections_filter, "ACTIVE" => "Y",]);
+        while ($_section = $_include_sections->GetNext()) {
+          $include_sections[] = $_section;
+        }
+      }
+
+      //Получить минимальную цену продуктов для категории
+      $_minimumPrice = CIBlockElement::GetList(["property_MINIMUM_PRICE" => "asc"], [...$elements_filter, ">property_MINIMUM_PRICE" => 0, "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE" => "Y"], false, ['nPageSize' => 40], ["ID"])->Fetch();
+
+      $minimumPrice = self::getPrice($_minimumPrice["ID"], 1);
+
+      $time_end = microtime(true);
+
+      $data = [
         "meta" => [
           "meta_title" => $meta["SECTION_META_TITLE"] ?? $section["NAME"],
           "meta_description" => $meta["SECTION_META_DESCRIPTION"] ?? "",
         ],
         "minimum_price" => $minimumPrice,
-        "time" => ($time_end - $time_start) / 60,
+        "time" => ($time_end - $time_start),
         "include_sections" => $getSections ? $include_sections : null,
         'breadcrumbs' => self::getBreadcrumb($section["ID"]),
         'pagination' => [
@@ -439,8 +449,15 @@ class CatalogController
         ],
         "items" => $page > $total_pages ? [] : $items,
         "section" => $section,
-      ]
-    );
+      ];
+
+      // return $resp->is200Response(
+      //   $response,
+      //   $data
+      // );
+      $obCache->EndDataCache($data);
+      return $resp->is200Response($response, ["cache" => "no", ...$data]);
+    }
   }
 
   public static function getFasets($request, $response)
